@@ -14,6 +14,10 @@
         <ion-input type='password' [(ngModel)]='Password'></ion-input>
     </ion-item>
 
-    <ion-button (click)='Login()'>Login</ion-button>
-    {{plt}}
+    <ion-button (click)='Login()' class="login">Login</ion-button>
+    <!--{{plt}}-->
+    <br>
+    <p>  Do not have an account? 
+        <span class="link" [routerLink]="['/registration']">Register here</span>
+    </p>
 </ion-content>
