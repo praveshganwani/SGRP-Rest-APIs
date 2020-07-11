@@ -1,55 +1,52 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Registration</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Registration</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-label>Select Your University</ion-label>
-    <ion-select placeholder="Select One">
-      <ion-select-option>A</ion-select-option>
-      <ion-select-option>B</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label>Select Your Institute</ion-label>
-    <ion-select placeholder="Select One">
-      <ion-select-option>A</ion-select-option>
-      <ion-select-option>B</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label>Select Your Course</ion-label>
-    <ion-select placeholder="Select One">
-      <ion-select-option>A</ion-select-option>
-      <ion-select-option>B</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">First Name</ion-label>
-    <ion-input type='text'></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Middle Name</ion-label>
-    <ion-input type='text'></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Last Name</ion-label>
-    <ion-input type='text'></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Student Unique ID</ion-label>
-    <ion-input type='text'></ion-input>
-  </ion-item>
-  <ion-item>
-      <ion-label position="floating">Email address</ion-label>
-      <ion-input type='email'></ion-input>
-  </ion-item>
-  <ion-item>
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type='password'></ion-input>
-  </ion-item>
+    <ion-item>
+        <ion-label>Select Your University</ion-label>
+        <ion-select [(ngModel)]='Student.University' (ngModelChange)='GetInstitutes()' placeholder="Select One">
+            <ion-select-option *ngFor='let uni of Universities' [value]='uni.committeeId'>{{uni.committeeName}}</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Select Your Institute</ion-label>
+        <ion-select [(ngModel)]='Student.instituteId' (ngModelChange)='GetCourses()' placeholder="Select One">
+            <ion-select-option *ngFor="let inst of Institutes" [value]='inst.committeeId'>{{inst.committeeName}}</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Select Your Course</ion-label>
+        <ion-select [(ngModel)]='Student.courseId' placeholder="Select One">
+            <ion-select-option *ngFor="let course of Courses" [value]='course.courseId'>{{course.courseName}}</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">First Name</ion-label>
+        <ion-input [(ngModel)]='Student.studentFirstName' type='text'></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">Middle Name</ion-label>
+        <ion-input [(ngModel)]='Student.studentMiddleName' type='text'></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">Last Name</ion-label>
+        <ion-input [(ngModel)]='Student.studentLastName' type='text'></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">Student Unique ID</ion-label>
+        <ion-input [(ngModel)]='Student.studentUID' type='text'></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">Email address</ion-label>
+        <ion-input [(ngModel)]='Student.studentEmail' type='email'></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input [(ngModel)]='Student.studentPassword' type='password'></ion-input>
+    </ion-item>
 
-  <ion-button>Register</ion-button>
+    <ion-button (click)='RegisterStudent()'>Register</ion-button>
 </ion-content>
