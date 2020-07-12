@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/user.service';
 import { Student } from 'src/app/Student';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -9,10 +10,15 @@ import { Student } from 'src/app/Student';
 })
 export class ProfilePage implements OnInit {
 
-  constructor(private user:UserService) { }
+  constructor(private user:UserService,private router:Router) { }
   student:Student
   ngOnInit() {
-    this.student=this.user.getStudent()
+    this.user.getStudent().then(data=>{
+      this.student=data
+      if(this.student ==  undefined){
+        this.router.navigateByUrl('/')
+      }
+    })
   }
 
 }

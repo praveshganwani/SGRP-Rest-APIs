@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Student } from './Student';
+import { Plugins } from '@capacitor/core';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,11 @@ export class UserService {
     this.student =s
   }
 
-  getStudent(){
+  async getStudent(){
     if(this.student == undefined){
-      this.setStudent(JSON.parse(localStorage.getItem('student')))
+      const { Storage } = Plugins;
+      let res = await Storage.get({ key: 'student' });
+     this.setStudent(JSON.parse(res.value))
     }
     return this.student
   }
