@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class ProfilePage implements OnInit {
 
   constructor(private user:UserService,private router:Router) { }
-  student:Student = {}
+  student:Student={}
   ngOnInit() {
     this.user.getStudent().then(data=>{
       

@@ -1,16 +1,27 @@
 <ion-header>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <ion-toolbar>
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-title>Profile</ion-title>
     </ion-toolbar>
+
 </ion-header>
 
+<ion-content class="background-image">
+</ion-content>
+
 <ion-content>
-
-    {{student|json}}
-
-
+    <div class="text first"><i class="fas fa-id-card"></i>{{student.studentUID}}</div>
+    <ion-item-divider></ion-item-divider>
+    <div class="text">
+        <ion-icon name="person"></ion-icon>{{student.studentFullName}}</div>
+    <ion-item-divider></ion-item-divider>
+    <div class="text">
+        <ion-icon name="mail"></ion-icon>{{student.studentEmail}}</div>
+    <ion-item-divider></ion-item-divider>
+    <div class="text"><i class="fa fa-university" aria-hidden="true"></i>{{student.instituteId}}</div>
+    <ion-button class="logout" style="cursor: pointer;" [routerLink]="['/']">Logout</ion-button>
 
 </ion-content>

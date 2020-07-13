@@ -1,0 +1,34 @@
+.background-image {
+    margin: 0px;
+    --background: url('../../../assets/profile.png') no-repeat center center; 
+    --background-size: cover;
+  }
+.text{
+    font-size: 18px;
+    margin-top: 8px;
+    color: #ffffff;
+    margin-left: 7%;
+    }
+ion-icon, i{
+    color: #C169ED;
+    font-size: 22px;
+    padding-right: 25px;
+}
+
+.logout{
+    top: 95%;
+    float: right;
+    margin: 10px;
+    --background: linear-gradient(90deg, #C169ED 0%, rgba(220, 36, 48, 0.91) 100%);
+}
+.logout-icon{
+    padding-right: 1px;
+    font-size: 22px;
+}
+.first{
+    margin-top: 0px;
+}
+.inner-scroll,.scroll-y {
+    padding: 0px;
+    margin: 0px;
+}

@@ -1,21 +1,18 @@
-.background-image {
-    background-image: url('/assets/Login.png');
-    background-size: cover;
-  }
-  ion-item.item-has-focus > ion-label{
-    color: #DC2430  !important;
-  }
+//.background-image {
+//    --background: url('../../assets/Login.png');
+//    --background-size: inherit;
+//  }
   ion-label{
-    color: #7B4397  !important;
+    color: #C169ED  !important;
   } 
   span{
-    color: #DC2430  
+    color: #FF2D3A  
   }
   p{
       margin: 30px;
   }
   .login{
-    --background: linear-gradient(90deg, #7B4397 0%, rgba(220, 36, 48, 0.91) 100%);
+    --background: linear-gradient(90deg, #C169ED 0%, rgba(220, 36, 48, 0.91) 100%);
     border-radius: 10px;
     width: 280px;
     height: 49px;
