@@ -4,9 +4,6 @@ import { Platform, AlertController } from '@ionic/angular';
 import { WebrequestService } from '../api/webrequest.service';
 import { UserService } from '../user.service';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx/';
-import { HttpClient } from '@angular/common/http';
-
-import { HTTP } from '@ionic-native/http/ngx';
 
 import { Plugins } from '@capacitor/core';
 
@@ -17,7 +14,7 @@ import { Plugins } from '@capacitor/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private http: HTTP, private router: Router, public zone: NgZone, private alert: AlertController, public platform: Platform, private web: WebrequestService, private user: UserService, private androidPermissions: AndroidPermissions,
+  constructor( private router: Router, public zone: NgZone, private alert: AlertController, public platform: Platform, private web: WebrequestService, private user: UserService, private androidPermissions: AndroidPermissions,
   ) {
 
   }
@@ -27,10 +24,6 @@ export class LoginPage implements OnInit {
   data
 
   ngOnInit() {
-    this.http.get('http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/committees',{},{}).then(data => {
-      this.showAlert('Data', JSON.stringify(data))
-      this.data= data
-    })
     this.plt = this.platform.platforms();
     if (this.plt.includes('android')) {
       this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.INTERNET).then(
@@ -49,10 +42,8 @@ export class LoginPage implements OnInit {
         let userEmail = this.Email
         let userPassword = this.Password
         let user = { userEmail, userPassword }
-
-        this.showAlert('Hello',JSON.stringify(user))
         this.web.post('login/student', user).subscribe(async (res: any) => {
-          this.showAlert('Details', res)
+          this.showAlert('Success', 'Login Successful')
           if (res.status == 1) {
             await Storage.set({
               key: 'student',

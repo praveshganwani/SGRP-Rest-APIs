@@ -2,6 +2,7 @@ export interface Student{
     studentFirstName?:string
     studentMiddleName?:string
     studentLastName?:string
+    studentFullName?:string
     studentUID?:string
     studentEmail?:string
     studentPassword?:string

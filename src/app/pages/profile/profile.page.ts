@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/user.service';
 import { Student } from 'src/app/Student';
 import { Router } from '@angular/router';
+import { Plugins } from '@capacitor/core';
 
 @Component({
   selector: 'app-profile',
@@ -23,5 +24,9 @@ export class ProfilePage implements OnInit {
       }
     })
   }
-
+  Logout(){
+    this.router.navigateByUrl('/')
+    const { Storage } = Plugins;
+     Storage.clear()
+  }
 }

@@ -10,9 +10,9 @@
 </ion-header>
 
 <ion-content class="background-image">
-</ion-content>
+    <div style="padding-top: 200px;">
 
-<ion-content>
+    </div>
     <div class="text first"><i class="fas fa-id-card"></i>{{student.studentUID}}</div>
     <ion-item-divider></ion-item-divider>
     <div class="text">
@@ -22,6 +22,6 @@
         <ion-icon name="mail"></ion-icon>{{student.studentEmail}}</div>
     <ion-item-divider></ion-item-divider>
     <div class="text"><i class="fa fa-university" aria-hidden="true"></i>{{student.instituteId}}</div>
-    <ion-button class="logout" style="cursor: pointer;" [routerLink]="['/']">Logout</ion-button>
+    <ion-button class="logout" style="cursor: pointer;" (click)='Logout()'>Logout</ion-button>
 
 </ion-content>
