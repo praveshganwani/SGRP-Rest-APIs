@@ -8,5 +8,32 @@
 </ion-header>
 
 <ion-content>
+    <ion-item>
+        <ion-label position="floating">Complaint Title</ion-label>
+        <ion-input type='text' [(ngModel)]='grievance.complaintTitle'>
+        </ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Complaint Details</ion-label>
+        <ion-input type='text' [(ngModel)]='grievance.complaintDetail'>
+        </ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Category</ion-label>
+        <ion-select [(ngModel)]='grievance.categoryId' placeholder='Select One'>
+            <ion-select-option *ngFor="let cat of Categories" [value]=cat.categoryId>{{cat.categoryName}}</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Anonymous</ion-label>
+        <ion-select [(ngModel)]='grievance.complaintIsAnonymous' placeholder='Select One'>
+            <ion-select-option [value]=1>Yes</ion-select-option>
+            <ion-select-option [value]=0>No</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-button class="lodge" (click)='LodgeComplaint()'>Submit</ion-button>
 
 </ion-content>
