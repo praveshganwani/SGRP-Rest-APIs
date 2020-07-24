@@ -25,11 +25,10 @@
         <ul class="timeline">
 
             <li *ngFor='let act of Activities' class="event">
-                <p style="position: absolute;right:250px;">{{act.activityTime}}</p>
+                <p style="position: absolute;right:30vw;width:max-content;">{{act.activityTime}}</p>
                 <h3>{{act.activityType | titlecase}}</h3>
                 <p>From: {{act.activityFrom}}</p>
                 <p>To: {{act.activityTo}}</p>
-
             </li>
         </ul>
     </div>
