@@ -25,8 +25,8 @@ const routes: Routes = [
         {
           path: 'complaint-status',
           loadChildren: () => import('../complaint-status/complaint-status.module').then( m => m.ComplaintStatusPageModule)
-        }
-       
+        },
+      
     ]
   },
   // {

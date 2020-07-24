@@ -3,10 +3,39 @@
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>Status</ion-title>
+        <ion-title>Complaint Status</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+    <ion-card *ngFor='let g of griveances'>
+        <ion-card-header>
+            <ion-card-title>{{g.complaintTitle}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <ion-label>Details:</ion-label>
+                <ion-label style="white-space: normal !important;"> {{g.complaintDetail}}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>Category: </ion-label>
+                <ion-label>{{g.categoryName}}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>Date Time:</ion-label>
+                <ion-label> {{g.complaintDateTime}}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>Status:</ion-label>
+                <ion-label>{{g.complaintIsSolved == 0 ? 'Pending' : 'Solved' }}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-button *ngIf='g.complaintIsSolved == 1 ' fill="outline" [routerLink]='"feedback/"+g.complaintId'>Send Feedback</ion-button>
+                <ion-button *ngIf='g.complaintIsSolved == 0 ' fill="outline" [routerLink]='"see-status/"+g.complaintId'>See Activity</ion-button>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
 
 </ion-content>

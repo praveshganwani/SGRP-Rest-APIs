@@ -21,6 +21,7 @@ export class ProfilePage implements OnInit {
       }
       else{
         this.student=data
+        console.log(this.student)
       }
     })
   }

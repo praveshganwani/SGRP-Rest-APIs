@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http'
   providedIn: 'root'
 })
 export class WebrequestService {
-  ROOT_URL='http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi'
+  ROOT_URL='http://sgrprestservice-env.eba-njsui4dk.us-east-1.elasticbeanstalk.com/webapi'
   constructor(private http:HttpClient) { }
 
   Get(url:string){

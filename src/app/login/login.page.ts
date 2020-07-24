@@ -14,15 +14,16 @@ import { Plugins } from '@capacitor/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor( private router: Router, public zone: NgZone, private alert: AlertController, public platform: Platform, private web: WebrequestService, private user: UserService, private androidPermissions: AndroidPermissions,
+  constructor(private router: Router, public zone: NgZone, private alert: AlertController, public platform: Platform, private web: WebrequestService, private user: UserService, private androidPermissions: AndroidPermissions,
   ) {
 
   }
-  Email
-  Password
+  Email:string
+  Password:string
   plt
   data
-
+  passwordType: string = 'password';
+  passwordIcon: string = 'eye-off';
   ngOnInit() {
     this.plt = this.platform.platforms();
     if (this.plt.includes('android')) {
@@ -31,7 +32,7 @@ export class LoginPage implements OnInit {
         err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.INTERNET)
       );
     }
-   
+
   }
   Login() {
     try {
@@ -43,12 +44,12 @@ export class LoginPage implements OnInit {
         let userPassword = this.Password
         let user = { userEmail, userPassword }
         this.web.post('login/student', user).subscribe(async (res: any) => {
-          this.showAlert('Success', 'Login Successful')
           if (res.status == 1) {
             await Storage.set({
               key: 'student',
               value: JSON.stringify(res.studentDetails)
             });
+            this.showAlert('Success', 'Login Successful')
             this.user.setStudent(res.studentDetails)
             this.router.navigate(['/menu'])
           }
@@ -69,6 +70,12 @@ export class LoginPage implements OnInit {
       this.showAlert('Error', err)
     }
 
+  }
+
+
+  hideShowPassword() {
+    this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
+    this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
   }
   async showAlert(header: string, message: string) {
     const alert = await this.alert.create({

@@ -2,19 +2,30 @@
 //    --background: url('../../assets/Login.png');
 //    --background-size: inherit;
 //  }
-  ion-label{
-    color: #C169ED  !important;
-  } 
-  span{
-    color: #FF2D3A  
-  }
-  p{
-      margin: 30px;
-  }
-  .login{
+ion-label {
+    color: #C169ED !important;
+}
+
+span {
+    color: #FF2D3A
+}
+
+p {
+    margin: 30px;
+}
+
+.login {
     --background: linear-gradient(90deg, #C169ED 0%, rgba(220, 36, 48, 0.91) 100%);
     border-radius: 10px;
     width: 280px;
     height: 49px;
     margin: 30px;
-  }
+}
+
+.passwordIcon {
+    font-size: 2rem !important;
+    position: absolute !important;
+    top: 10px !important;
+    right: 0px;
+    margin: 0 auto !important;
+}

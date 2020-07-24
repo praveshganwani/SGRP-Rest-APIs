@@ -11,7 +11,9 @@
     </ion-item>
     <ion-item>
         <ion-label position="floating">Password</ion-label>
-        <ion-input type='password' [(ngModel)]='Password'></ion-input>
+        <ion-input [type]="passwordType" clearOnEdit="false" [(ngModel)]='Password'></ion-input>
+        <ion-icon item-end [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
+
     </ion-item>
 
     <ion-button (click)='Login()' class="login">Login</ion-button>

@@ -26,11 +26,11 @@ export class MenuPage implements OnInit {
       url:'/menu/faqs'
     },
     {
-      title:'Lodge Complaints',
+      title:'Lodge Complaint',
       url:'/menu/lodge-complaint'
     },
     {
-      title:'Status',
+      title:'Complaint Status',
       url:'/menu/complaint-status'
     }
   ]
