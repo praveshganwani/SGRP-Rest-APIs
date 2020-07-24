@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-feedback',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedbackPage implements OnInit {
 
-  constructor() { }
-
+  constructor(private route: ActivatedRoute) { }
+  complaintId=''
   ngOnInit() {
+   this.route.params.subscribe(params => {
+    this.complaintId=params["complaintId"];
+    });
   }
 
 }

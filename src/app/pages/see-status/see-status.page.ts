@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-see-status',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeeStatusPage implements OnInit {
 
-  constructor() { }
-
+  constructor(private route:ActivatedRoute) { }
+  complaintId:string=''
   ngOnInit() {
+   
+    this.route.params.subscribe(params => {
+     this.complaintId=params["complaintId"];
+     });
   }
 
 }
