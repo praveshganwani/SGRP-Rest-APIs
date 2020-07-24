@@ -17,7 +17,7 @@
     <ion-item *ngIf='Activities.length == 0'>
         There is no activity yet.
     </ion-item>
-    <div id="timeline-content">
+    <!--<div id="timeline-content">
         <h1>Timeline</h1>
         <div class="vl">
 
@@ -32,6 +32,23 @@
 
             </li>
         </ul>
+    </div>-->
+
+
+    <div class="history-tl-container">
+    <ul class="tl">
+
+        <li *ngFor='let act of Activities' class="tl-item" ng-repeat="item in retailer_history">
+        <div class="timestamp">
+            {{act.activityTime}}
+        </div>
+        <div class="item-title">{{act.activityType | titlecase}}</div>
+        <div class="item-detail">From: {{act.activityFrom}}</div>
+        <div class="item-detail">To: {{act.activityTo}}</div>
+        </li>
+
+    </ul>
+
     </div>
 
 </ion-content>
