@@ -3,11 +3,11 @@
 //    --background-size: inherit;
 //  }
 ion-label {
-    color: #C169ED !important;
+    color: #185a9d !important;
 }
 
 span {
-    color: #FF2D3A
+    color: #8fbc8f;
 }
 
 p {
@@ -15,7 +15,7 @@ p {
 }
 
 .login {
-    --background: linear-gradient(90deg, #C169ED 0%, rgba(220, 36, 48, 0.91) 100%);
+    --background: linear-gradient(90deg, #8fbc8f 10%, #185a9d 90%);
     border-radius: 10px;
     width: 280px;
     height: 49px;
@@ -28,4 +28,6 @@ p {
     top: 10px !important;
     right: 0px;
     margin: 0 auto !important;
+    color: #8fbc8f;
 }
+

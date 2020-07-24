@@ -1,6 +1,6 @@
 .background-image {
     margin: 0px;
-    --background: url('../../../assets/profile.png') no-repeat top;
+    --background: url('../../../assets/Profile.jpg') no-repeat top;
     --background-size: cover;
 }
 
@@ -13,7 +13,7 @@
 
 ion-icon,
 i {
-    color: #C169ED;
+    color: #185a9d;
     font-size: 22px;
     padding-right: 25px;
 }
@@ -22,7 +22,7 @@ i {
     top: 95%;
     float: right;
     margin: 10px;
-    --background: linear-gradient(90deg, #C169ED 0%, rgba(220, 36, 48, 0.91) 100%);
+    --background: linear-gradient(90deg, #8fbc8f 10%, #185a9d 90%);
 }
 
 .logout-icon {
