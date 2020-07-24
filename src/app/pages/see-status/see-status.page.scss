@@ -65,77 +65,64 @@ h1 {
 
 /* Timeline */
 
-.timeline {
-    border-bottom-right-radius: $radius;
-    border-top-right-radius: $radius;
-    background: fade($color-light, 3%);
-    color: fade(white, 80%);
-    font-family: $font-text;
-    margin: $spacing auto;
-    letter-spacing: 0.5px;
-    position: relative;
-    line-height: 1.4em;
-    font-size: 1.03em;
-    padding: $spacing;
-    list-style: none;
-    text-align: left;
-    font-weight: 100;
-    max-width: 60%;
-    border-left: 4px solid #428cff;
-    height: 500px;
-    position: absolute;
-    left: 50%;
-    margin-left: -3px;
-    top: 100px;
-    h1 {
-        font-family: $font-title;
-        letter-spacing: 1.5px;
-        font-weight: 100;
-        font-size: 1.4em;
-    }
-    h2,
-    h3 {
-        font-family: $font-title;
-        letter-spacing: 1.5px;
-        font-weight: 400;
-        font-size: 1.4em;
-    }
-    .event {
-        border-bottom: 1px dashed fade($color-light, 10%);
-        padding-bottom: ($spacing * 0.5);
-        margin-bottom: $spacing;
-        position: relative;
-        &:last-of-type {
-            padding-bottom: 0;
-            margin-bottom: 0;
-            border: none;
-        }
-        &:before,
-        &:after {
-            position: absolute;
-            display: block;
-            top: 0;
-        }
-        &:before {
-            left: ((($date * 0.6) + $spacing + $line + $dot + ($dotborder * 2)) * 1.5) * -1;
-            color: fade($color-light, 40%);
-            text-align: right;
-            font-weight: 100;
-            font-size: 0.9em;
-            min-width: $date;
-            font-family: $font-title;
-        }
-        &:after {
-            box-shadow: 0 0 0 $dotborder fade($color-primary, 100%);
-            left: ($spacing + $line + ($dot * 0.35)) * -1;
-            background: lighten($background, 5%);
-            border-radius: 50%;
-            height: $dot;
-            width: $dot;
-            content: "";
-            top: 5px;
-        }
-    }
-}
-
-.vl {}
+body{
+    line-height:1.3em;
+    min-width:920px;
+  }
+  .history-tl-container{
+    font-family: "Roboto",sans-serif;
+    width:50%;
+    margin:auto;
+    display:block;
+    position:relative;
+  }
+  .history-tl-container ul.tl{
+      margin:20px 0;
+      padding:0;
+      display:inline-block;
+  
+  }
+  .history-tl-container ul.tl li{
+      list-style: none;
+      margin:auto;
+      margin-left:90px;
+      min-height:50px;
+      /*background: rgba(255,255,0,0.1);*/
+      border-left:1px dashed #86D6FF;
+      padding:0 0 50px 30px;
+      position:relative;
+  }
+  .history-tl-container ul.tl li:last-child{ border-left:0;}
+  .history-tl-container ul.tl li::before{
+      position: absolute;
+      left: -18px;
+      top: -5px;
+      content: " ";
+      border: 8px solid rgba(255, 255, 255, 0.74);
+      border-radius: 500%;
+      background: #258CC7;
+      height: 20px;
+      width: 20px;
+      transition: all 500ms ease-in-out;
+  
+  }
+  .history-tl-container ul.tl li:hover::before{
+      border-color:  #258CC7;
+      transition: all 1000ms ease-in-out;
+  }
+  ul.tl li .item-title{
+    font-size:16px;
+    color: #29c467;
+  }
+  ul.tl li .item-detail{
+      color:#ffffff;
+      font-size:12px;
+  }
+  ul.tl li .timestamp{
+      color: #428cff;
+      position: absolute;
+      width:100px;
+      left: -130%;
+      text-align: right;
+      font-size: 12px;
+  }
