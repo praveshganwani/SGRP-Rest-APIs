@@ -38,17 +38,9 @@ export class ComplaintStatusPage implements OnInit {
       this.griveances.forEach(g => {
         g.categoryName = this.Categories[this.Categories.findIndex(e => e.categoryId == g.categoryId)].categoryName
       })
-      console.log(this.griveances)
     })
   }
 
-  // GotoFeedback(complaintId: String) {
-  //   this.router.navigateByUrl('feedback', { queryParams: { complaintId: complaintId } })
-  // }
-
-  // GotoStatus(complaintId: String) {
-  //   this.router.navigate(['see-status'], { queryParams: { complaintId: complaintId } })
-  // }
 
 
   async GetCategories() {

@@ -1,15 +1,12 @@
 .lodge {
-    --background: linear-gradient(90deg, #8fbc8f 10%, #185a9d 90%);
+    --background: linear-gradient(90deg, #29c467 10%, #428cff 90%);
     border-radius: 10px;
     width: 280px;
     height: 49px;
     margin: 30px;
 }
 
-.input {
-    color: #185a9d
-}
-
-.select{
-    color: #8fbc8f
+.input,
+.select {
+    color: #428cff
 }

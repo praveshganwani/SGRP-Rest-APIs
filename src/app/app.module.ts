@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -11,8 +11,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http/ngx';
-
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgVerticalTimelineModule } from 'ng-vertical-timeline';
+
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 library.add(fas);
@@ -21,7 +22,7 @@ library.add(fas);
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,FontAwesomeModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,FontAwesomeModule,NgVerticalTimelineModule],
   providers: [
     StatusBar,
     SplashScreen,
@@ -29,6 +30,7 @@ library.add(fas);
     HTTP,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

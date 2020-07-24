@@ -8,8 +8,7 @@
 </ion-header>
 
 <ion-content>
-    Complaint ID:{{complaintId}}
-    <ion-radio-group value="biff">
+    <ion-radio-group [(ngModel)]='Satisfied'>
         <ion-list-header>
             <ion-label>Were You Satisfied?</ion-label>
         </ion-list-header>
@@ -23,9 +22,12 @@
             <ion-radio slot="start" value="Dissatisfied"></ion-radio>
         </ion-item>
     </ion-radio-group>
+    <br>
     <ion-item>
-        <ion-label position="floating">Enter your Comments here</ion-label>
-        <ion-textarea></ion-textarea>
+        <ion-label position="floating">Enter your Comments here....</ion-label>
+        <ion-textarea [(ngModel)]='feedback' autoGrow='true' spellcheck="true"></ion-textarea>
     </ion-item>
+
+    <ion-button (click)='SendFeedback()'>Send Feedback</ion-button>
 
 </ion-content>

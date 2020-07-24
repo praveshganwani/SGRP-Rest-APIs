@@ -21,10 +21,7 @@ export class MenuPage implements OnInit {
       title:'Profile',
       url:'/menu/profile'
     },
-    {
-      title:'FAQs',
-      url:'/menu/faqs'
-    },
+   
     {
       title:'Lodge Complaint',
       url:'/menu/lodge-complaint'
@@ -32,6 +29,9 @@ export class MenuPage implements OnInit {
     {
       title:'Complaint Status',
       url:'/menu/complaint-status'
+    }, {
+      title:'FAQs',
+      url:'/menu/faqs'
     }
   ]
 
