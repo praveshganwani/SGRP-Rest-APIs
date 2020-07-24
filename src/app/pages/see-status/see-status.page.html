@@ -17,26 +17,21 @@
     <ion-item *ngIf='Activities.length == 0'>
         There is no activity yet.
     </ion-item>
+    <div id="timeline-content">
+        <h1>Timeline</h1>
+        <div class="vl">
 
-    <vertical-timeline>
+        </div>
+        <ul class="timeline">
 
-        <vertical-timeline-card *ngFor='let act of Activities' [dateValue]="act.activityTime.split(' ')[0]" [timeString]="act.activityTime.split(' ')[1]">
-            <h3>Activity: {{act.activityType |titlecase}}</h3>
-            <h4>
-                From : {{act.activityFrom}}
-            </h4>
-            <h4>
-                To : {{act.activityTo}}
-            </h4>
-        </vertical-timeline-card>
+            <li *ngFor='let act of Activities' class="event">
+                <p style="position: absolute;right:250px;">{{act.activityTime}}</p>
+                <h3>{{act.activityType | titlecase}}</h3>
+                <p>From: {{act.activityFrom}}</p>
+                <p>To: {{act.activityTo}}</p>
 
-
-    </vertical-timeline>
-    <!-- tomorrow = new Date(2017, 9, 20, 14,34); -->
-    <!-- <vertical-timeline-card date>
-        <h1>Tomorrow</h1>
-    </vertical-timeline-card> -->
-
-    <!-- tomorrow = new Date(2017, 9, 20, 14,34); -->
+            </li>
+        </ul>
+    </div>
 
 </ion-content>

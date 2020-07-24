@@ -12,17 +12,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http/ngx';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgVerticalTimelineModule } from 'ng-vertical-timeline';
-
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { DatetimelineDirective } from './datetimeline.directive';
+
 library.add(fas);
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DatetimelineDirective],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,FontAwesomeModule,NgVerticalTimelineModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,FontAwesomeModule],
   providers: [
     StatusBar,
     SplashScreen,

@@ -7,9 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { SeeStatusPageRoutingModule } from './see-status-routing.module';
 
 import { SeeStatusPage } from './see-status.page';
-import { NO_ERRORS_SCHEMA } from '@angular/compiler';
-import { NgVerticalTimelineComponent } from 'ng-vertical-timeline';
-import { VerticalTimelineModule } from 'angular-vertical-timeline';
+import { DatetimelineDirective } from '../../datetimeline.directive';
+
 
 @NgModule({
   imports: [
@@ -17,9 +16,8 @@ import { VerticalTimelineModule } from 'angular-vertical-timeline';
     FormsModule,
     IonicModule,
     SeeStatusPageRoutingModule,
-    VerticalTimelineModule
   ],
  
-  declarations: [SeeStatusPage]
+  declarations: [SeeStatusPage,DatetimelineDirective]
 })
 export class SeeStatusPageModule {}
