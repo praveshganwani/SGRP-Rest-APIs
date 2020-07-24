@@ -5,6 +5,7 @@ import { Plugins } from '@capacitor/core';
 import { Student } from 'src/app/Student';
 import { AlertController } from '@ionic/angular';
 
+import * as spamCheck from 'spam-check'
 @Component({
   selector: 'app-lodge-complaint',
   templateUrl: './lodge-complaint.page.html',
@@ -12,10 +13,11 @@ import { AlertController } from '@ionic/angular';
 })
 export class LodgeComplaintPage implements OnInit {
   grievance: Grievance = {}
-  constructor(private web: WebrequestService,private alert: AlertController) { }
+  constructor(private web: WebrequestService, private alert: AlertController) { }
   Categories = []
-  Student:Student = {}
+  Student: Student = {}
   async ngOnInit() {
+
     this.GetCategories()
     const { Storage } = Plugins;
     await Storage.get({ key: 'student' }).then(res => {
@@ -23,27 +25,35 @@ export class LodgeComplaintPage implements OnInit {
         this.Student = JSON.parse(res.value)
       }
     })
-   
-    console.log(this.Student)
     this.grievance.complaintStudentId = this.Student.studentId;
   }
 
 
   GetCategories() {
-    this.web.Get('categories').toPromise().then((data:Array<any>) => {
+    this.web.Get('categories').toPromise().then((data: Array<any>) => {
       this.Categories = data
     })
   }
 
 
-  LodgeComplaint(){
+  LodgeComplaint() {
     console.log(this.grievance)
-    this.web.post('grievances/grievance',this.grievance).subscribe((res:any)=>{
-      console.log(res)
-      if(res.status == 1){
-        this.showAlert('Sucess','Complaint logded successfully.')
-      }
-    })
+    // const spellcheck = require('spell-checker-js')
+    
+    // var options = { 'string': this.grievance.complaintDetail, 'type': 'part' };
+    // spamCheck(options, function (err, results) {
+    //   console.log("err:", err);
+    //   console.log("results:", results);
+    // });
+   
+      this.web.post('grievances/grievance', this.grievance).subscribe((res: any) => {
+        console.log(res)
+        if (res.status == 1) {
+          this.showAlert('Sucess', 'Complaint logded successfully.')
+        }
+      })
+   
+
   }
 
   async showAlert(header: string, message: string) {

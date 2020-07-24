@@ -15,6 +15,9 @@ export class RegistrationPage implements OnInit {
   Universities = []
   Institutes = []
   Courses = []
+  ConfirmPassword = ''
+  showPassword = false;
+  
   constructor(private regiser: RegistrationService, private router: Router,private alert: AlertController) { }
 
   ngOnInit() {
@@ -23,6 +26,10 @@ export class RegistrationPage implements OnInit {
       this.Committees = data
     })
 
+  }
+
+  TogglePassword(){
+    this.showPassword = !this.showPassword
   }
 
   GetInstitutes() {
@@ -42,6 +49,9 @@ export class RegistrationPage implements OnInit {
     this.Student.isActive = 1
     this.Student.isVerified = 0
     try {
+      if(this.ConfirmPassword != this.Student.studentPassword){
+        throw new Error('Passwords do not match.')
+      }
       this.regiser.RegisterStudent(this.Student).subscribe((res: any) => {
         if (res.status == 1) {
           this.showAlert('Success','Registered Successfully')
@@ -53,7 +63,7 @@ export class RegistrationPage implements OnInit {
       })
     }
     catch (err) {
-      this.showAlert('Failed','Something Went wrong, please make sure to fill all details correctly')
+      this.showAlert('Failed',err)
     }
   }
   async showAlert(header: string, message: string) {

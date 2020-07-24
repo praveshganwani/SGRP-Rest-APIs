@@ -45,7 +45,12 @@
     </ion-item>
     <ion-item>
         <ion-label position="floating" class="input">Password</ion-label>
-        <ion-input [(ngModel)]='Student.studentPassword' type='password'></ion-input>
+        <ion-input [(ngModel)]='Student.studentPassword' [type]='showPassword ? "text" : "password" '></ion-input>
+        <ion-icon slot="end" [name]='showPassword ? "eye-off" : "eye"' (click)='TogglePassword()'></ion-icon>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating" class="input">Confirm Password</ion-label>
+        <ion-input [(ngModel)]='ConfirmPassword' type='password'></ion-input>
     </ion-item>
 
     <ion-button class='signup' (click)='RegisterStudent()'>Register</ion-button>

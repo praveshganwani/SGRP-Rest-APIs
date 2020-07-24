@@ -11,8 +11,8 @@
     </ion-item>
     <ion-item>
         <ion-label position="floating">Password</ion-label>
-        <ion-input [type]="passwordType" clearOnEdit="false" [(ngModel)]='Password'></ion-input>
-        <ion-icon item-end [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
+        <ion-input [type]='showPassword ? "text" : "password" ' clearOnEdit="false" [(ngModel)]='Password'></ion-input>
+        <ion-icon slot="end" [name]='showPassword ? "eye-off" : "eye"' (click)='TogglePassword()'></ion-icon>
 
     </ion-item>
 

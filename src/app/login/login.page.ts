@@ -22,8 +22,8 @@ export class LoginPage implements OnInit {
   Password:string
   plt
   data
-  passwordType: string = 'password';
-  passwordIcon: string = 'eye-off';
+  showPassword = false;
+  
   ngOnInit() {
     this.plt = this.platform.platforms();
     if (this.plt.includes('android')) {
@@ -73,10 +73,11 @@ export class LoginPage implements OnInit {
   }
 
 
-  hideShowPassword() {
-    this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
-    this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
+ 
+  TogglePassword(){
+    this.showPassword = !this.showPassword
   }
+
   async showAlert(header: string, message: string) {
     const alert = await this.alert.create({
       header,
