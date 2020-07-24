@@ -1,9 +1,6 @@
-ion-label {
-    color: #C169ED !important;
-}
 
-span {
-    color: #FF2D3A
+.input {
+    color: #185a9d
 }
 
 p {
@@ -11,9 +8,13 @@ p {
 }
 
 .signup {
-    --background: linear-gradient(90deg, #C169ED 0%, rgba(220, 36, 48, 0.91) 100%);
+    --background: linear-gradient(90deg, #8fbc8f 10%, #185a9d 90%);
     border-radius: 10px;
     width: 280px;
     height: 49px;
     margin: 30px;
+}
+
+.select{
+    color: #8fbc8f
 }
