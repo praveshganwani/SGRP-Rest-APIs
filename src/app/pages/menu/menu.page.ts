@@ -29,7 +29,15 @@ export class MenuPage implements OnInit {
     {
       title:'Complaint Status',
       url:'/menu/complaint-status'
-    }, {
+    }, 
+    {
+      title:'Notifications',
+      url:'/menu/notifications'
+    },{
+      title:'Notices',
+      url:'/menu/notices'
+    },
+    {
       title:'FAQs',
       url:'/menu/faqs'
     }

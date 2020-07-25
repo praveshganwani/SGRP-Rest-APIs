@@ -1,6 +1,6 @@
 .background-image {
     margin: 0px;
-    background: url('../../../assets/profile-transparent.png') no-repeat top;
+    background: url('../../../assets/profile.png') no-repeat top;
     background-size: cover;
     height: 150px;
 }
@@ -8,7 +8,7 @@
 @media screen and (min-width: 391px) and (max-width: 834px) {
     .background-image {
         margin: 0px;
-        background: url('../../../assets/profile-834-transparent.png') no-repeat top;
+        background: url('../../../assets/profile-834.png') no-repeat top;
         background-size: cover;
         height: 200px;
     }
@@ -17,7 +17,7 @@
 @media screen and (min-width: 835px) {
     .background-image {
         margin: 0px;
-        background: url('../../../assets/profile-990-transparent.png') no-repeat top;
+        background: url('../../../assets/profile-990.png') no-repeat top;
         background-size: cover;
         height: 200px;
     }

@@ -78,10 +78,11 @@ export class LoginPage implements OnInit {
   }
 
 
- 
+  
   TogglePassword(){
     this.showPassword = !this.showPassword
   }
+
 
   async showAlert(header: string, message: string) {
     const alert = await this.alert.create({

@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Hind:300,400&display=swap');
 $bg: #ffffff;
-$text: #ffffff;
+$text: #428cff;
 $gray: #4d5974;
 $lightgray: #e5e5e5;
-$pink: #428cff;
+$pink: #29c467;
 * {
     box-sizing: border-box;
     &::before,
@@ -24,8 +24,9 @@ body {
 
 .container {
     margin: 0 auto;
-    padding: 4rem;
-    width: 48rem;
+    padding: 3rem;
+    //width: 48rem;
+    width: 100%;
 }
 
 .accordion {

@@ -21,3 +21,28 @@ p {
     height: 49px;
     margin: 30px;
 }
+
+.link {
+    &:hover {
+        color: #428cff;
+    }
+    &:focus {
+        color: #428cff;
+    }
+}
+
+.responsiveImg {
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+}
+
+@media screen and (min-width: 391px) and (max-width: 834px) {
+    .LeftSpace {}
+}
+
+@media screen and (min-width: 835px) {
+    .LeftSpace {
+        margin-left: 10%;
+    }
+}

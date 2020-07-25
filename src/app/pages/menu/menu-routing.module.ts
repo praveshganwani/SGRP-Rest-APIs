@@ -26,6 +26,14 @@ const routes: Routes = [
           path: 'complaint-status',
           loadChildren: () => import('../complaint-status/complaint-status.module').then( m => m.ComplaintStatusPageModule)
         },
+        {
+          path: 'notifications',
+          loadChildren: () => import('../notifications/notifications.module').then( m => m.NotificationsPageModule)
+        },
+        {
+          path: 'notices',
+          loadChildren: () => import('../notices/notices.module').then( m => m.NoticesPageModule)
+        },
       
     ]
   },
