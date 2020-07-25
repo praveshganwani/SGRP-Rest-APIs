@@ -9,30 +9,35 @@
 
 </ion-header>
 
-<ion-content class="background-image">
-    <div style="padding-top: 200px;">
+<ion-content>
+    <div class="background-image">
+
     </div>
-    <div class="text first"><i class="fas fa-id-card"></i>{{student.studentUID}}</div>
-    <ion-item-divider class="hide"></ion-item-divider>
-    <div class="text">
-        <ion-icon name="person"></ion-icon>{{student.studentFullName |titlecase}}</div>
-    <ion-item-divider class="hide"></ion-item-divider>
-    <div class="text">
-        <ion-icon name="mail"></ion-icon>{{student.studentEmail}}</div>
-    <ion-item-divider class="hide"></ion-item-divider>
-    <div class="text"><i class="fa fa-university" aria-hidden="true"></i>{{student.instituteId}}</div>
-    <ion-item-divider></ion-item-divider>
-    <div class="text"><i class="fa fa-user-graduate" aria-hidden="true"></i>{{InstituteName}}</div>
-    <ion-item-divider></ion-item-divider>
-    <div class="text"><i class="fa fa-graduation-cap" aria-hidden="true"></i>{{UniversityName}}</div>
-    <ion-item-divider></ion-item-divider>
-    <div class="text"><i class="fa fa-certificate" aria-hidden="true"></i>{{CourseName}}</div>
-    <ion-item-divider></ion-item-divider>
-    <ion-button class="logout" style="cursor: pointer;" (click)='Logout()'>Logout</ion-button>
-    <ion-item>
+    <div>
+        <div class="text first"><i class="fas fa-id-card"></i>{{student.studentUID}}</div>
+        <ion-item-divider class="hide"></ion-item-divider>
+        <div class="text">
+            <ion-icon name="person"></ion-icon>{{student.studentFullName |titlecase}}</div>
+        <ion-item-divider class="hide"></ion-item-divider>
+        <div class="text">
+            <ion-icon name="mail"></ion-icon>{{student.studentEmail}}</div>
+        <ion-item-divider class="hide"></ion-item-divider>
+        <div class="text"><i class="fa fa-university" aria-hidden="true"></i>{{student.instituteId}}</div>
+        <ion-item-divider></ion-item-divider>
+        <div class="text"><i class="fa fa-user-graduate" aria-hidden="true"></i>{{InstituteName}}</div>
+        <ion-item-divider></ion-item-divider>
+        <div class="text"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+            <ion-label>{{UniversityName}}</ion-label>
+        </div>
+        <ion-item-divider></ion-item-divider>
+        <div class="text"><i class="fa fa-certificate" aria-hidden="true"></i>{{CourseName}}</div>
+        <ion-item-divider></ion-item-divider>
+        <ion-button class="logout" style="cursor: pointer;" (click)='Logout()'>Logout</ion-button>
+        <ion-item>
 
-        Dark Theme :
-        <ion-toggle checked='true' (ionChange)='onToggleTheme($event)'> </ion-toggle>
+            Dark Theme :
+            <ion-toggle checked='true' (ionChange)='onToggleTheme($event)'> </ion-toggle>
 
-    </ion-item>
+        </ion-item>
+    </div>
 </ion-content>

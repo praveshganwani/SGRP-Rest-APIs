@@ -4,6 +4,7 @@ import { Student } from 'src/app/Student';
 import { Router } from '@angular/router';
 import { Plugins } from '@capacitor/core';
 import { RegistrationService } from 'src/app/api/registration.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-profile',
@@ -12,18 +13,20 @@ import { RegistrationService } from 'src/app/api/registration.service';
 })
 export class ProfilePage implements OnInit {
 
-  constructor(private user: UserService, private router: Router, private register: RegistrationService) { }
+  constructor(private user: UserService, private router: Router, private register: RegistrationService,private navCtrl:NavController) { }
   student: Student = {}
   InstituteName = ''
   UniversityName = ''
   CourseName = ''
   ngOnInit() {
+    this.navCtrl.navigateRoot("/menu/profile");
     this.user.getStudent().then(data => {
 
       if (this.student == undefined) {
         this.router.navigateByUrl('/')
       }
       else {
+       
         this.student = data
         this.CourseName = localStorage.getItem('CourseName')
         this.InstituteName = localStorage.getItem('InstituteName')
@@ -58,9 +61,11 @@ export class ProfilePage implements OnInit {
     }
   }
   Logout() {
-    this.router.navigateByUrl('/')
     const { Storage } = Plugins;
     Storage.clear()
     localStorage.clear()
+    this.navCtrl.navigateRoot("/");
+    this.router.navigateByUrl('/')
+  
   }
 }

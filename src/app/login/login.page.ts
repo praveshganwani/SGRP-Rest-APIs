@@ -7,6 +7,8 @@ import { AndroidPermissions } from '@ionic-native/android-permissions/ngx/';
 
 import { Plugins } from '@capacitor/core';
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -14,8 +16,8 @@ import { Plugins } from '@capacitor/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private router: Router, public zone: NgZone, private alert: AlertController, public platform: Platform, private web: WebrequestService, private user: UserService, private androidPermissions: AndroidPermissions,
-  ) {
+  constructor(private router: Router, public zone: NgZone, private alert: AlertController, public platform: Platform, private web: WebrequestService,
+     private user: UserService, private androidPermissions: AndroidPermissions) {
 
   }
   Email:string
@@ -51,6 +53,9 @@ export class LoginPage implements OnInit {
             });
             this.showAlert('Success', 'Login Successful')
             this.user.setStudent(res.studentDetails)
+            this.Email = ''
+            this.Password = ''
+          
             this.router.navigate(['/menu'])
           }
 
