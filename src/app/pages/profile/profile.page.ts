@@ -25,21 +25,42 @@ export class ProfilePage implements OnInit {
       }
       else {
         this.student = data
-        this.register.GetCourses().subscribe((res:Array<any>)=>{
-          console.log(res)
-          this.CourseName = res.find(e=>e.courseId == this.student.courseId).courseName
-        })
-        this.register.GetCommittee().subscribe((res: Array<any>) => {
-          let inst = (res.find(e => e.committeeId == this.student.instituteId))
-          this.InstituteName = inst.committeeName
-          this.UniversityName =  (res.find(e=>e.committeeId == inst.parentId)).committeeName
-        })
+        this.CourseName = localStorage.getItem('CourseName')
+        this.InstituteName = localStorage.getItem('InstituteName')
+        this.UniversityName = localStorage.getItem('UniversityName')
+        if (this.CourseName == undefined) {
+          this.register.GetCourses().subscribe((res: Array<any>) => {
+            this.CourseName = res.find(e => e.courseId == this.student.courseId).courseName
+            localStorage.setItem('CourseName', this.CourseName)
+          })
+        }
+        if (this.InstituteName == undefined) {
+          this.register.GetCommittee().subscribe((res: Array<any>) => {
+            let inst = (res.find(e => e.committeeId == this.student.instituteId))
+            this.InstituteName = inst.committeeName
+            localStorage.setItem('InstituteName', this.InstituteName)
+            this.UniversityName = (res.find(e => e.committeeId == inst.parentId)).committeeName
+            localStorage.setItem('UniversityName', this.UniversityName)
+          })
+        }
       }
     })
+  }
+
+  onToggleTheme(event) {
+    console.log(event.detail.checked)
+    if (event.detail.checked) {
+      document.body.setAttribute('color-theme', 'dark')
+    }
+    else {
+      document.body.setAttribute('color-theme', 'light')
+
+    }
   }
   Logout() {
     this.router.navigateByUrl('/')
     const { Storage } = Plugins;
     Storage.clear()
+    localStorage.clear()
   }
 }

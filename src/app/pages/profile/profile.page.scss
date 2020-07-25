@@ -1,5 +1,4 @@
-@media screen and (max-width: 390px)
-{
+@media screen and (max-width: 390px) {
     .background-image {
         margin: 0px;
         --background: url('../../../assets/profile.jpg') no-repeat top;
@@ -7,8 +6,7 @@
     }
 }
 
-@media screen and (min-width: 391px) and (max-width: 834px)
-{
+@media screen and (min-width: 391px) and (max-width: 834px) {
     .background-image {
         margin: 0px;
         --background: url('../../../assets/Profile-834_1194.png') no-repeat top;
@@ -16,18 +14,17 @@
     }
 }
 
-@media screen and (min-width: 835px)
-{
+@media screen and (min-width: 835px) {
     .background-image {
         margin: 0px;
         --background: url('../../../assets/Profile-990.png') no-repeat top;
         --background-size: cover;
     }
 }
+
 .text {
     font-size: 18px;
     margin-top: 8px;
-    color: #ffffff;
     margin-left: 7%;
     position: relative;
     z-index: -1;
@@ -65,7 +62,7 @@ i {
     margin: 0px;
 }
 
-.hide{
+.hide {
     position: relative;
     z-index: -1;
 }

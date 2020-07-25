@@ -26,8 +26,13 @@
     <ion-item-divider></ion-item-divider>
     <div class="text"><i class="fa fa-graduation-cap" aria-hidden="true"></i>{{UniversityName}}</div>
     <ion-item-divider></ion-item-divider>
-    <div class="text"><i class="fa fa-graduation-cap" aria-hidden="true"></i>{{CourseName}}</div>
+    <div class="text"><i class="fa fa-certificate" aria-hidden="true"></i>{{CourseName}}</div>
     <ion-item-divider></ion-item-divider>
     <ion-button class="logout" style="cursor: pointer;" (click)='Logout()'>Logout</ion-button>
+    <ion-item>
 
+        Dark Theme :
+        <ion-toggle checked='true' (ionChange)='onToggleTheme($event)'> </ion-toggle>
+
+    </ion-item>
 </ion-content>
