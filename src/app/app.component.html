@@ -1,8 +1,9 @@
+<ion-fab style="top: 0;" vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button color='success'>
+        <ion-toggle color='warning' (ionChange)='onToggleTheme($event)'> </ion-toggle>
+    </ion-fab-button>
+</ion-fab>
 <ion-app>
-    <ion-fab vertical="top" horizontal="end" slot="fixed">
-        <ion-fab-button color='success'>
-            <ion-toggle color='warning' (ionChange)='onToggleTheme($event)'> </ion-toggle>
-        </ion-fab-button>
-    </ion-fab>
+
     <ion-router-outlet></ion-router-outlet>
 </ion-app>

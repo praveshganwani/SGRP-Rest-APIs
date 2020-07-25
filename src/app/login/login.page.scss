@@ -20,6 +20,7 @@ p {
     width: 280px;
     height: 49px;
     margin: 30px;
+    margin-bottom: 5px;
 }
 
 .link {
@@ -37,8 +38,11 @@ p {
     height: auto;
 }
 
-@media screen and (min-width: 391px) and (max-width: 834px) {
-    .LeftSpace {}
+@media screen and (max-width: 400px) {
+    .responsiveImg {
+        width: 250px;
+        height: 250px;
+    }
 }
 
 @media screen and (min-width: 835px) {
