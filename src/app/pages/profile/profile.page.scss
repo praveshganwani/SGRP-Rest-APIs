@@ -1,14 +1,36 @@
-.background-image {
-    margin: 0px;
-    --background: url('../../../assets/profile.jpg') no-repeat top;
-    --background-size: cover;
+@media screen and (max-width: 390px)
+{
+    .background-image {
+        margin: 0px;
+        --background: url('../../../assets/profile.jpg') no-repeat top;
+        --background-size: cover;
+    }
 }
 
+@media screen and (min-width: 391px) and (max-width: 834px)
+{
+    .background-image {
+        margin: 0px;
+        --background: url('../../../assets/Profile-834_1194.png') no-repeat top;
+        --background-size: cover;
+    }
+}
+
+@media screen and (min-width: 835px)
+{
+    .background-image {
+        margin: 0px;
+        --background: url('../../../assets/Profile-990.png') no-repeat top;
+        --background-size: cover;
+    }
+}
 .text {
     font-size: 18px;
     margin-top: 8px;
     color: #ffffff;
     margin-left: 7%;
+    position: relative;
+    z-index: -1;
 }
 
 ion-icon,
@@ -16,6 +38,8 @@ i {
     color: #428cff;
     font-size: 22px;
     padding-right: 25px;
+    position: relative;
+    z-index: -1;
 }
 
 .logout {
@@ -31,11 +55,17 @@ i {
 }
 
 .first {
-    margin-top: 0px;
+    position: relative;
+    z-index: -1;
 }
 
 .inner-scroll,
 .scroll-y {
     padding: 0px;
     margin: 0px;
+}
+
+.hide{
+    position: relative;
+    z-index: -1;
 }
