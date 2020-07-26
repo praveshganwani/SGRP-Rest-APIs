@@ -19,8 +19,8 @@ export class AppComponent {
     private router: Router,
 
   ) {
-    
-    
+
+
     this.initializeApp();
   }
 
@@ -42,7 +42,7 @@ export class AppComponent {
     })
   }
 
-  
+
   onToggleTheme(event) {
     console.log(event.detail.checked)
     if (event.detail.checked) {
@@ -53,4 +53,6 @@ export class AppComponent {
 
     }
   }
+
+  
 }
