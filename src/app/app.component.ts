@@ -57,5 +57,9 @@ export class AppComponent {
     }
   }
 
+  getUniversity(){
+    return localStorage.getItem('UniversityName') || ''
+ }
+
   
 }

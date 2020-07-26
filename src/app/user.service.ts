@@ -7,9 +7,18 @@ import { Plugins } from '@capacitor/core';
 })
 export class UserService {
   student:Student 
+  Response = []
   constructor() { }
+
+  setReponse(res){
+    this.Response = res
+  }
   setStudent(s:Student){
     this.student =s
+  }
+
+  getResponse(){
+    return this.Response
   }
 
   async getStudent(){

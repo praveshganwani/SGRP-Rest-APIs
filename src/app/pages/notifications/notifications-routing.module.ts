@@ -7,7 +7,12 @@ const routes: Routes = [
   {
     path: '',
     component: NotificationsPage
-  }
+  },
+  {
+    path: 'response',
+    loadChildren: () => import('../response/response.module').then( m => m.ResponsePageModule)
+  },
+ 
 ];
 
 @NgModule({

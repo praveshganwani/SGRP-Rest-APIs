@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Response</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list>
+        <div *ngFor="let chat of Response; let i = index; ">
+            <ion-row *ngIf="chat.responseFrom.includes('STU')">
+                <ion-col class="right">
+                    {{chat.response}}: You
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="!chat.responseFrom.includes('STU')">
+                <ion-col class="left">
+                    {{chat.responseFrom}}: {{chat.response}}
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-list>
+
+    <ion-input *ngIf='Response[Response.length-1].responseTo.includes("STUD")' style="border-top: 1px solid; position: absolute;bottom: 0;" type='text' [(ngModel)]='Message' placeholder='Enter your Message here.....'>
+        <ion-button (click)='SendMessage()' style="float:left ;">
+            <ion-icon name='send'></ion-icon>
+        </ion-button>
+    </ion-input>
+</ion-content>
