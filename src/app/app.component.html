@@ -3,13 +3,13 @@
         <ion-toggle color='warning' (ionChange)='onToggleTheme($event)'> </ion-toggle>
     </ion-fab-button>
 </ion-fab>
-<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+<ion-fab *ngIf='Student' vertical="bottom" horizontal="end">
     <!-- <ion-badge color="danger">0</ion-badge> -->
     <ion-fab-button>
-        <ion-icon name="cog"></ion-icon>
+        <ion-icon name="chatbubbles"></ion-icon>
     </ion-fab-button>
 
-    <ion-fab-list side="top">
+    <ion-fab-list style="margin-top:0;">
         <iframe allow="microphone;" width="300" height="400" src="https://console.dialogflow.com/api-client/demo/embedded/8a309464-913b-44ea-8576-748783b49d1d">
             </iframe>
     </ion-fab-list>

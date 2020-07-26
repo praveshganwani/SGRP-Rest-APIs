@@ -24,6 +24,8 @@ export class AppComponent {
     this.initializeApp();
   }
 
+  Student = undefined
+
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
@@ -32,6 +34,7 @@ export class AppComponent {
       Storage.get({ key: 'student' }).then(res => {
         if (res) {
           if (res.value) {
+            this.Student = res.value
             this.router.navigate(['/menu'])
           }
         }
