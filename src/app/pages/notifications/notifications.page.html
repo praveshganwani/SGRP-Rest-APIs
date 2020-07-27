@@ -8,13 +8,12 @@
 </ion-header>
 
 <ion-content>
-    <ion-card *ngFor='let res of Responses'>
+    <ion-card *ngFor='let res of Responses' (click)='GoToResponse(res)'>
         <ion-card-header>
             <ion-card-subtitle>{{res[0].complaintTitle}}</ion-card-subtitle>
             <ion-card-title class="blue">{{res[0].complaintId}}
-
-                <ion-icon (click)='GoToResponse(res)' name="arrow-forward"></ion-icon>
             </ion-card-title>
+            <ion-icon style="position: relative; float: right; bottom: 20px;" name="send"></ion-icon>
         </ion-card-header>
         <ion-card-content>
         </ion-card-content>

@@ -4,6 +4,8 @@ import { WebrequestService } from 'src/app/api/webrequest.service';
 import { Plugins } from '@capacitor/core';
 import { Student } from 'src/app/Student';
 import { AlertController } from '@ionic/angular';
+import Notiflix from "notiflix";
+
 @Component({
   selector: 'app-lodge-complaint',
   templateUrl: './lodge-complaint.page.html',
@@ -33,12 +35,23 @@ export class LodgeComplaintPage implements OnInit {
     })
   }
   LodgeComplaint() {
+    try{
+    Notiflix.Loading.Standard();
       this.web.post('grievances/grievance', this.grievance).subscribe((res: any) => {
-        console.log(res)
+        Notiflix.Loading.Remove();
         if (res.status == 1) {
           this.showAlert('Sucess', 'Complaint logded successfully.')
+          this.grievance = {}
+        }
+        else{
+          this.showAlert('Failed', 'Something Went Wrong.')
         }
       })
+    }
+    catch(err){
+      this.showAlert('Failed', 'Something Went Wrong.')
+      Notiflix.Loading.Remove();
+    }
   }
 
   async showAlert(header: string, message: string) {

@@ -6,6 +6,7 @@ import { UserService } from '../user.service';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx/';
 
 import { Plugins } from '@capacitor/core';
+import Notiflix from "notiflix";
 
 
 
@@ -38,6 +39,7 @@ export class LoginPage implements OnInit {
   }
   Login() {
     try {
+      Notiflix.Loading.Standard();
       const { Storage } = Plugins;
 
       this.zone.run(() => {
@@ -51,29 +53,36 @@ export class LoginPage implements OnInit {
               key: 'student',
               value: JSON.stringify(res.studentDetails)
             });
-            this.showAlert('Success', 'Login Successful')
+            Notiflix.Loading.Remove();
+            Notiflix.Notify.Success('Login Successful')
             this.user.setStudent(res.studentDetails)
             this.Email = ''
             this.Password = ''
-          
+           
             this.router.navigate(['/menu'])
           }
-
           else if (res.status == -1) {
+            Notiflix.Loading.Remove();
             this.showAlert('Error', 'Wrong Password')
           }
           else if (res.status == -2) {
+            Notiflix.Loading.Remove();
             this.showAlert('Error', 'User not verified.Wait for verification')
           }
           else if (res.status == -3) {
+            Notiflix.Loading.Remove();
             this.showAlert('Error', 'Student not registered')
           }
         })
       })
     }
     catch (err) {
+      Notiflix.Loading.Standard();
       this.showAlert('Error', err)
     }
+   
+   
+
 
   }
 

@@ -11,7 +11,9 @@
 
     <ion-card *ngFor='let g of griveances'>
         <ion-card-header>
-            <ion-card-title class="blue">{{g.complaintTitle}}</ion-card-title>
+            <ion-card-title class="blue">{{g.complaintTitle}}
+                <ion-icon *ngIf='g.complaintIsSolved == 1' style="float: right;" name='checkmark-circle'></ion-icon>
+            </ion-card-title>
         </ion-card-header>
         <ion-card-content>
             <ion-item>

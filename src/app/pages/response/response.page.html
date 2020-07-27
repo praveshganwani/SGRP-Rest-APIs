@@ -7,50 +7,30 @@
     </ion-toolbar>
 </ion-header>
 
-<!--
+
 <ion-content>
+    <div class="chat-box">
+        <div class="chat-room">
+            <div *ngFor="let chat of Response; let i = index; ">
 
-    <ion-list>
-        <div *ngFor="let chat of Response; let i = index; ">
-            <ion-row *ngIf="chat.responseFrom.includes('STU')">
-                <ion-col class="right">
-                    {{chat.response}}: You
-                </ion-col>
-            </ion-row>
-            <ion-row *ngIf="!chat.responseFrom.includes('STU')">
-                <ion-col class="left">
-                    {{chat.responseFrom}}: {{chat.response}}
-                </ion-col>
-            </ion-row>
+                <div *ngIf="!chat.responseFrom.includes('STU')" class="message message-left">
+                    <div class="bubble bubble-light">
+                        {{chat.responseFrom}}: {{chat.response}}
+                    </div>
+                </div>
+                <div *ngIf="chat.responseFrom.includes('STU')" class="message message-right">
+                    <div class="bubble bubble-dark">
+                        {{chat.response}}: You
+                    </div>
+                </div>
+            </div>
         </div>
-    </ion-list>
-
-    <ion-input *ngIf='Response[Response.length-1].responseTo.includes("STUD")' style="border-top: 1px solid; position: absolute;bottom: 0;" type='text' [(ngModel)]='Message' placeholder='Enter your Message here.....'>
-        <ion-button (click)='SendMessage()' style="float:left ;">
-            <ion-icon name='send'></ion-icon>
-        </ion-button>
-    </ion-input>
-</ion-content>-->
-
-
-  <div class="chat-box">
-    <div class="chat-room">
-      <div class="message message-left">
-        <div class="bubble bubble-light">
-          Hey anhat!
+        <div *ngIf='Response[Response.length-1].responseTo.includes("STUD")' class="type-area">
+            <div class="input-wrapper">
+                <input type="text" [(ngModel)]='Message' id="inputText" placeholder="Type messages here..." />
+            </div>
+            <button (click)='SendMessage()' class="button-send"> <ion-icon name='send'></ion-icon></button>
         </div>
-      </div>
-      <div class="message message-right">       
-        <div class="bubble bubble-dark">
-          what is going on?
-        </div>
-      </div>
+
     </div>
-    <div class="type-area">
-      <div class="input-wrapper">
-        <input type="text" id="inputText" placeholder="Type messages here..." />
-      </div>
-      <button class="button-send">Send</button>
-    </div>
-  
-  </div>
+</ion-content>
