@@ -15,6 +15,7 @@ export class ComplaintStatusPage implements OnInit {
   griveances: Array<Grievance> = []
   Student: Student = {}
   Categories = []
+  filter='all'
   constructor(private web: WebrequestService, private alert: AlertController, private router: Router) { }
 
   async ngOnInit() {

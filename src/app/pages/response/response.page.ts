@@ -13,9 +13,13 @@ export class ResponsePage implements OnInit {
   constructor(private user: UserService, private webReq: WebrequestService) { }
   Response = []
   ngOnInit() {
-    this.Response = this.user.getResponse()
+    this.Response = JSON.parse(JSON.stringify(this.user.getResponse()))
     this.Response.reverse()
-    console.log(this.Response)
+   this.Response.forEach(res=>{
+     let arr = (new Date(res.responseTime).toString().split(' '))
+     arr = arr.slice(0,5)
+     res.responseTime = arr.join(' ')
+   })
   }
 
   SendMessage() {

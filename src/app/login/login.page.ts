@@ -59,7 +59,7 @@ export class LoginPage implements OnInit {
             this.Email = ''
             this.Password = ''
            
-            this.router.navigate(['/menu'])
+            this.router.navigate(['/menu'],{replaceUrl:true})
           }
           else if (res.status == -1) {
             Notiflix.Loading.Remove();

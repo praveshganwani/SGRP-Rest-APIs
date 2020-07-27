@@ -8,14 +8,20 @@
 </ion-header>
 
 <ion-content>
-
+    <ion-item>
+        <ion-select [(ngModel)]='filter'>
+            <ion-select-option value='all'>All</ion-select-option>
+            <ion-select-option value='unsolved'>Unsolved</ion-select-option>
+            <ion-select-option value="solved">Solved</ion-select-option>
+        </ion-select>
+    </ion-item>
     <ion-card *ngFor='let g of griveances'>
-        <ion-card-header>
+        <ion-card-header *ngIf='(g.complaintIsSolved==1 && filter=="solved" || filter == "all") || (g.complaintIsSolved==0 && filter=="unsolved" || filter == "all") '>
             <ion-card-title class="blue">{{g.complaintTitle}}
                 <ion-icon *ngIf='g.complaintIsSolved == 1' style="float: right;" name='checkmark-circle'></ion-icon>
             </ion-card-title>
         </ion-card-header>
-        <ion-card-content>
+        <ion-card-content *ngIf='(g.complaintIsSolved==1 && filter=="solved" || filter == "all") || (g.complaintIsSolved==0 && filter=="unsolved" || filter == "all") '>
             <ion-item>
                 <ion-label class="green">Complaint Id:</ion-label>
                 <ion-label>{{g.complaintId }}</ion-label>

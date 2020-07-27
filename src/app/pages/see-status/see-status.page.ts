@@ -23,6 +23,11 @@ export class SeeStatusPage implements OnInit {
   getComplaintActivity() {
     this.web.Get('activities/activity/' + this.complaintId).subscribe((res: Array<any>) => {
       this.Activities = res
+      this.Activities.forEach(act=>{
+        let arr = (new Date(act.activityTime).toString().split(' '))
+        arr = arr.slice(0,5)
+        act.activityTime = arr.join(' ')
+      })
       this.events = []
     })
   }

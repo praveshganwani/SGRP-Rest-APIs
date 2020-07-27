@@ -64,8 +64,8 @@ export class ProfilePage implements OnInit {
     const { Storage } = Plugins;
     Storage.clear()
     localStorage.clear()
-    this.navCtrl.navigateRoot("/");
-    this.router.navigateByUrl('/')
+    
+    this.router.navigate(['/'],{replaceUrl:true})
   
   }
 }

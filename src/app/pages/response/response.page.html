@@ -11,25 +11,27 @@
 <ion-content>
     <div class="chat-box">
         <div class="chat-room">
+
             <div *ngFor="let chat of Response; let i = index; ">
 
                 <div *ngIf="!chat.responseFrom.includes('STU')" class="message message-left">
                     <div class="bubble bubble-light">
-                         {{chat.response}}
-                    <br><br>
-                    <div>By {{chat.responseFrom.includes('UNIV') ? getUniversityName() : getInstitueName() }} on {{chat.responseTime}}</div>
+                        {{chat.response}}
+                        <br><br>
+                        <div>By {{chat.responseFrom.includes('UNIV') ? getUniversityName() : getInstitueName() }} on {{chat.responseTime}}</div>
                     </div>
                 </div>
                 <div *ngIf="chat.responseFrom.includes('STU')" class="message message-right">
                     <div class="bubble bubble-dark">
                         {{chat.response}}
-                    <br><br>
-                    <div>By You on {{chat.responseTime}}</div>
+                        <br><br>
+                        <div>By You on {{chat.responseTime}}</div>
                     </div>
                 </div>
-            </div>           
+            </div>
+
         </div>
-        <div *ngIf='Response[Response.length-1].responseTo.includes("STUD")' class="type-area">
+        <div class="type-area">
             <div class="input-wrapper">
                 <input type="text" [(ngModel)]='Message' id="inputText" placeholder="Type messages here..." />
             </div>

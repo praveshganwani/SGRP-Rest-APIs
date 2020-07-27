@@ -46,9 +46,10 @@ export class NotificationsPage implements OnInit {
   }
 
   GoToResponse(res){
-    console.log(this.Responses)
+    
     this.user.setReponse(res)
-    this.router.navigateByUrl('/menu/notifications/response')
+    
+    this.router.navigate(['/menu/notifications/response'])
   }
 
 }
