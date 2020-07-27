@@ -15,15 +15,19 @@
 
                 <div *ngIf="!chat.responseFrom.includes('STU')" class="message message-left">
                     <div class="bubble bubble-light">
-                        {{chat.responseFrom.includes('UNIV') ? getUniversityName() : getInstitueName() }}: {{chat.response}}
+                         {{chat.response}}
+                    <br><br>
+                    <div>By {{chat.responseFrom.includes('UNIV') ? getUniversityName() : getInstitueName() }} on {{chat.responseTime}}</div>
                     </div>
                 </div>
                 <div *ngIf="chat.responseFrom.includes('STU')" class="message message-right">
                     <div class="bubble bubble-dark">
-                        {{chat.response}}: You
+                        {{chat.response}}
+                    <br><br>
+                    <div>By You on {{chat.responseTime}}</div>
                     </div>
                 </div>
-            </div>
+            </div>           
         </div>
         <div *ngIf='Response[Response.length-1].responseTo.includes("STUD")' class="type-area">
             <div class="input-wrapper">
