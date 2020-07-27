@@ -15,7 +15,7 @@
 
                 <div *ngIf="!chat.responseFrom.includes('STU')" class="message message-left">
                     <div class="bubble bubble-light">
-                        {{chat.responseFrom}}: {{chat.response}}
+                        {{chat.responseFrom.includes('UNIV') ? getUniversityName() : getInstitueName() }}: {{chat.response}}
                     </div>
                 </div>
                 <div *ngIf="chat.responseFrom.includes('STU')" class="message message-right">

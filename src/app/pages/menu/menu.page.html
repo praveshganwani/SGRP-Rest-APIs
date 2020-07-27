@@ -17,6 +17,10 @@
                     {{p.title}}
                 </ion-item>
             </ion-menu-toggle>
+            <ion-item>
+                Dark Theme:
+                <ion-toggle style="position: absolute;right: 0;" color='warning' (ionChange)='onToggleTheme($event)'> </ion-toggle>
+            </ion-item>
         </ion-list>
         <ion-content>
 

@@ -9,30 +9,30 @@ import { WebrequestService } from 'src/app/api/webrequest.service';
 })
 export class SeeStatusPage implements OnInit {
 
-  constructor(private route:ActivatedRoute,private web:WebrequestService) { }
-  complaintId:string=''
+  constructor(private route: ActivatedRoute, private web: WebrequestService) { }
+  complaintId: string = ''
   Activities = []
   events = []
   ngOnInit() {
     this.route.params.subscribe(params => {
-     this.complaintId=params["complaintId"];
-    this.getComplaintActivity();
-     });
+      this.complaintId = params["complaintId"];
+      this.getComplaintActivity();
+    });
   }
 
-  getComplaintActivity(){
-    this.web.Get('activities/activity/'+this.complaintId).subscribe((res:Array<any>)=>{
+  getComplaintActivity() {
+    this.web.Get('activities/activity/' + this.complaintId).subscribe((res: Array<any>) => {
       this.Activities = res
       this.events = []
-      this.Activities.forEach(act=>{
-        let item={
-          id: 0,
-          title: act.Type,
-          content: "From "+ act.From + " to " + act.To,
-          date: act.activityTime ,
-        }
-        this.events.push(item)
-      })
     })
+  }
+
+  getUniversityName() {
+    return localStorage.getItem('UniversityName')
+  }
+
+  getInstitueName(){
+    return localStorage.getItem('InstituteName')
+
   }
 }

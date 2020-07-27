@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/user.service';
 import { WebrequestService } from 'src/app/api/webrequest.service';
+import Notiflix from "notiflix";
 
 @Component({
   selector: 'response',
@@ -29,12 +30,22 @@ export class ResponsePage implements OnInit {
         if (res.status == 1) {
           this.Response.push(Chat_Response)
           this.Message=''
+          Notiflix.Notify.Success('Message Sent Successfully')
         } 
       })
     }
     else{
-
+      Notiflix.Notify.Warning('Empty Message Not allowed')
     }
+  }
+
+  getUniversityName() {
+    return localStorage.getItem('UniversityName')
+  }
+
+  getInstitueName(){
+    return localStorage.getItem('InstituteName')
+
   }
 
 }
