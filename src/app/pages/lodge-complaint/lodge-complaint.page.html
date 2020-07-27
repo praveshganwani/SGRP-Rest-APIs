@@ -19,10 +19,12 @@
         <ion-input type='text' [(ngModel)]='grievance.complaintDetail'>
         </ion-input>
     </ion-item>
-
+    <ion-item>
+        <ion-button (click)='DetectComplaint()'>Detect Category</ion-button> <small> *Press to detect categort</small>
+    </ion-item>
     <ion-item>
         <ion-label class="select">Category</ion-label>
-        <ion-select [(ngModel)]='grievance.categoryId' placeholder='Select One'>
+        <ion-select disabled [(ngModel)]='grievance.categoryId' placeholder='Select One'>
             <ion-select-option *ngFor="let cat of Categories" [value]=cat.categoryId>{{cat.categoryName}}</ion-select-option>
         </ion-select>
     </ion-item>

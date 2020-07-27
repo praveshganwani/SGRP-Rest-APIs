@@ -24,16 +24,16 @@
                 <div *ngIf="chat.responseFrom.includes('STU')" class="message message-right">
                     <div class="bubble bubble-dark">
                         {{chat.response}}
-                        <br><br>
+                        <br>
                         <div>By You on {{chat.responseTime}}</div>
                     </div>
                 </div>
             </div>
 
         </div>
-        <div class="type-area">
+        <div *ngIf='Response[Response.length-1].responseTo.includes("Stu")' class="type-area">
             <div class="input-wrapper">
-                <input type="text" [(ngModel)]='Message' id="inputText" placeholder="Type messages here..." />
+                <input type="text" [(ngModel)]='Message' id="inputText" placeholder="Respond in brief as you are allowed to respond only once ......." />
             </div>
             <button (click)='SendMessage()' class="button-send"> <ion-icon name='send'></ion-icon></button>
         </div>
