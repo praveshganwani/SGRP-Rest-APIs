@@ -15,7 +15,7 @@ import {ImageServiceService} from '../../image-service.service'
 })
 export class LodgeComplaintPage implements OnInit {
   grievance: Grievance = {}
-  imgPreview: any;
+  imgPreview:any;
   imageSet: boolean;
   itemPicturesStoreURL: unknown;
   Categories = []
@@ -113,11 +113,12 @@ export class LodgeComplaintPage implements OnInit {
     }
   }
 
-  
+ 
 
   FileChange(event){
     let file  = event.target.files[0];
     // let 
+    console.log(file)
     this.imgPreview = file
     this.imageSet = true;
   }

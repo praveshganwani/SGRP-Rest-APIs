@@ -21,7 +21,10 @@
     </ion-item>
     <ion-item>
         <ion-label class="input">Picture</ion-label>
-        <ion-input type="file" (change)="FileChange($event)"></ion-input>
+
+
+        <ion-input id='fileinput' #f type="file" (change)="FileChange($event)"></ion-input>
+
 
     </ion-item>
 
@@ -40,6 +43,7 @@
             <ion-select-option [value]=0>No</ion-select-option>
         </ion-select>
     </ion-item>
+
 
     <ion-button class="lodge" (click)='LodgeComplaint()'>Submit</ion-button>
 
