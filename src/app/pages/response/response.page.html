@@ -25,13 +25,14 @@
                     <div class="bubble bubble-dark">
                         {{chat.response}}
                         <br>
-                        <div>By You on {{chat.responseTime}}</div>
+                        <div *ngIf='chat.responseTime'>By You on {{chat.responseTime}}</div>
+                        <div *ngIf='!chat.responseTime'>By You Now</div>
                     </div>
                 </div>
             </div>
 
         </div>
-        <div *ngIf='Response[Response.length-1].responseTo.includes("Stu")' class="type-area">
+        <div *ngIf='Response[Response.length-1].responseTo.includes("STU")' class="type-area">
             <div class="input-wrapper">
                 <input type="text" [(ngModel)]='Message' id="inputText" placeholder="Respond in brief as you are allowed to respond only once ......." />
             </div>

@@ -24,6 +24,9 @@
             <li *ngFor='let act of Activities' class="tl-item" ng-repeat="item in retailer_history">
                 <div class="timestamp">
                     {{act.activityTime}}
+                    <p style="margin-top: 3px;">
+                        {{act.activityComment}}
+                    </p>
                 </div>
 
                 <div class="item-title">{{act.activityType | titlecase}}</div>

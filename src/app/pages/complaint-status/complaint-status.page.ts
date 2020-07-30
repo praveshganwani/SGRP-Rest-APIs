@@ -15,7 +15,7 @@ export class ComplaintStatusPage implements OnInit {
   griveances: Array<Grievance> = []
   Student: Student = {}
   Categories = []
-  filter='all'
+  filter = 'all'
   constructor(private web: WebrequestService, private alert: AlertController, private router: Router) { }
 
   async ngOnInit() {
@@ -36,6 +36,7 @@ export class ComplaintStatusPage implements OnInit {
     this.web.Get('grievances').toPromise().then((data: Array<any>) => {
       this.griveances = data
       this.griveances = data.filter(ele => ele.complaintStudentId == this.Student.studentId)
+      this.griveances.sort((a, b) => a.complaintDateTime > b.complaintDateTime ? -1 : 1)
       this.griveances.forEach(g => {
         g.categoryName = this.Categories[this.Categories.findIndex(e => e.categoryId == g.categoryId)].categoryName
       })

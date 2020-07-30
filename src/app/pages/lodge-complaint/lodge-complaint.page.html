@@ -16,12 +16,17 @@
 
     <ion-item>
         <ion-label position="floating" class="input">Complaint Details</ion-label>
-        <ion-input type='text' [(ngModel)]='grievance.complaintDetail'>
+        <ion-input (ionBlur)='DetectComplaint()' type='text' [(ngModel)]='grievance.complaintDetail'>
         </ion-input>
     </ion-item>
     <ion-item>
-        <ion-button (click)='DetectComplaint()'>Detect Category</ion-button> <small> *Press to detect categort</small>
+        <ion-label class="input">Picture</ion-label>
+        <ion-input type="file" (change)="FileChange($event)"></ion-input>
+
     </ion-item>
+
+
+
     <ion-item>
         <ion-label class="select">Category</ion-label>
         <ion-select disabled [(ngModel)]='grievance.categoryId' placeholder='Select One'>
@@ -37,5 +42,7 @@
     </ion-item>
 
     <ion-button class="lodge" (click)='LodgeComplaint()'>Submit</ion-button>
+
+    *Incase of wrong category rephrase your complaint.
 
 </ion-content>

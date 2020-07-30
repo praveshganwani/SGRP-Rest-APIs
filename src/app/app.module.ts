@@ -15,7 +15,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { DatetimelineDirective } from './datetimeline.directive';
+import { Camera } from '@ionic-native/camera/ngx/';
+import { File } from '@ionic-native/file/ngx';
 
+import {ImageServiceService} from './image-service.service'
 library.add(fas);
 
 
@@ -28,6 +31,9 @@ library.add(fas);
     SplashScreen,
     AndroidPermissions,
     HTTP,
+    Camera,
+    ImageServiceService,
+    File,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

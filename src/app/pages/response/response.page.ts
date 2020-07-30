@@ -32,6 +32,7 @@ export class ResponsePage implements OnInit {
       }
       this.webReq.post('responses/response', Chat_Response).toPromise().then((res: any) => {
         if (res.status == 1) {
+          
           this.Response.push(Chat_Response)
           this.Message=''
           Notiflix.Notify.Success('Message Sent Successfully')

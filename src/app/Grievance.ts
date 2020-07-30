@@ -8,5 +8,6 @@ export interface Grievance{
     categoryName?:string,
     complaintDateTime?:string,
     complaintIsSolved?:number,
-    complaintId?:string
+    complaintId?:string,
+    imageUrl?:string
 }

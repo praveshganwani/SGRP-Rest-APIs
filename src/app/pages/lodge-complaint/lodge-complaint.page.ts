@@ -3,8 +3,10 @@ import { Grievance } from 'src/app/Grievance';
 import { WebrequestService } from 'src/app/api/webrequest.service';
 import { Plugins } from '@capacitor/core';
 import { Student } from 'src/app/Student';
-import { AlertController } from '@ionic/angular';
+import { Platform, AlertController } from '@ionic/angular';
 import Notiflix from "notiflix";
+import {Camera} from '@ionic-native/camera/ngx/'
+import {ImageServiceService} from '../../image-service.service'
 
 @Component({
   selector: 'app-lodge-complaint',
@@ -13,11 +15,17 @@ import Notiflix from "notiflix";
 })
 export class LodgeComplaintPage implements OnInit {
   grievance: Grievance = {}
-  constructor(private web: WebrequestService, private alert: AlertController) { }
+  imgPreview: any;
+  imageSet: boolean;
+  itemPicturesStoreURL: unknown;
   Categories = []
+  plt:any
   Student: Student = {}
+  base64Image
+  constructor(private web: WebrequestService, public platform: Platform, private alert: AlertController,private camera:Camera,public imageProvider: ImageServiceService) { }
+  
   async ngOnInit() {
-
+    this.plt = this.platform.platforms();
     this.GetCategories()
     const { Storage } = Plugins;
     await Storage.get({ key: 'student' }).then(res => {
@@ -34,19 +42,25 @@ export class LodgeComplaintPage implements OnInit {
       this.Categories = data
     })
   }
-  DetectComplaint() {
+  async DetectComplaint() {
     try {
       if (this.grievance.complaintDetail && this.grievance.complaintTitle) {
-        this.web.post('grievances/check/spam', { complaintDetail: this.grievance.complaintDetail }).subscribe((res: any) => {
-          console.log(res)
-          if (res.status == -100) {
-            Notiflix.Notify.Failure('Spam Complaints not allowed.Simplify your complaint')
+        await this.web.post('grievances/check/spam', { complaintDetail: this.grievance.complaintDetail }).toPromise().then(async (res: any) => {
+          if (res) {
+            if (res.status == -100) {
+              Notiflix.Notify.Failure('Spam Complaints not allowed.Simplify your complaint')
+            }
+            else if (res.status == 1) {
+              await this.web.post('grievances/check/category', { complaintDetail: this.grievance.complaintDetail }).toPromise().then((res: any) => {
+
+                this.grievance.categoryId = res.categoryId
+                Notiflix.Notify.Success('Category has been detected')
+
+              })
+            }
           }
-          else if (res.status == 1) {
-            this.web.post('grievances/check/category', { complaintDetail: this.grievance.complaintDetail }).subscribe((res: any) => {
-              console.log(res)
-              this.grievance.categoryId = res.categoryId
-            })
+          else {
+            Notiflix.Notify.Failure('Server Error.Try again in sometime')
           }
         })
       }
@@ -58,27 +72,37 @@ export class LodgeComplaintPage implements OnInit {
       console.log(err)
     }
   }
-  LodgeComplaint() {
+  async LodgeComplaint() {
     try {
       Notiflix.Loading.Standard();
+      if (!this.grievance.categoryId) {
+        await this.DetectComplaint()
+      }
       if (this.grievance.complaintDetail.length < 15) {
         Notiflix.Loading.Remove();
         Notiflix.Notify.Warning('Please add more detail to the complaint.')
       }
       else if (this.grievance.complaintDetail && this.grievance.complaintTitle && this.grievance.categoryId && (this.grievance.complaintIsAnonymous == 0 || this.grievance.complaintIsAnonymous == 1)) {
+        await this.submitForm();
+        this.grievance.imageUrl='https://sih2020complaints.s3.amazonaws.com/'+this.itemPicturesStoreURL
         this.web.post('grievances/grievance', this.grievance).subscribe((res: any) => {
           Notiflix.Loading.Remove();
-          if (res.status == 1) {
-            this.showAlert('Sucess', 'Complaint logded successfully.')
-            this.grievance = {}
+          if (res) {
+            if (res.status == 1) {
+              this.showAlert('Sucess', 'Complaint logded successfully.')
+              this.grievance = {}
+            }
+            else {
+              this.showAlert('Failed', 'Something Went Wrong.')
+            }
           }
-          else {
-            this.showAlert('Failed', 'Something Went Wrong.')
+          else{
+            Notiflix.Notify.Failure('Serve Error.Try again in sometime.')
           }
         })
       }
       else {
-        console.log(this.grievance)
+       
         Notiflix.Loading.Remove();
         Notiflix.Notify.Warning('Empty Complaint Not allowed.Make sure your category is detected')
       }
@@ -87,6 +111,27 @@ export class LodgeComplaintPage implements OnInit {
       this.showAlert('Failed', 'Something Went Wrong.')
       Notiflix.Loading.Remove();
     }
+  }
+
+  
+
+  FileChange(event){
+    let file  = event.target.files[0];
+    // let 
+    this.imgPreview = file
+    this.imageSet = true;
+  }
+
+  async submitForm(){
+    if(this.imageSet) {
+      let imageName = 'Complaint_';
+      await this.imageProvider.uploadImage(this.imgPreview, imageName).then((res) => {
+        console.log("Response", res);
+        this.itemPicturesStoreURL = res;
+      }).catch((err) => {
+        this.showAlert("Error is", err)
+      })
+    } 
   }
 
   async showAlert(header: string, message: string) {
