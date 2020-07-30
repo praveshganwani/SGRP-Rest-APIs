@@ -10,3 +10,24 @@
 .select {
     color: #428cff
 }
+
+#myFileInput{
+    position: absolute;
+    opacity: 0;
+  }
+  
+.picture{
+    color:#29c467;
+    border-radius: 10px;
+    width: 80px;
+    height: 30px;
+    margin-left: 5px;
+}
+.file{
+    font-size: 14px;
+    margin-left: 7%;
+}
+.text{
+    margin: 5%;
+    font-size: 14px;
+}
