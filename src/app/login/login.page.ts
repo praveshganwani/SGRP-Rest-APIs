@@ -73,6 +73,10 @@ export class LoginPage implements OnInit {
             Notiflix.Loading.Remove();
             this.showAlert('Error', 'Student not registered')
           }
+          else if(res.status == -100){
+            Notiflix.Loading.Remove();
+            this.showAlert('Error', 'You have been blocked.')
+          }
         })
       })
     }

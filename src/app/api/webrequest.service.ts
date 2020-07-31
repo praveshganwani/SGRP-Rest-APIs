@@ -13,5 +13,7 @@ export class WebrequestService {
   post(url:string,data){
     return this.http.post(`${this.ROOT_URL}/${url}`,data)
   }
-
+  delete(url:string){
+    return this.http.delete(`${this.ROOT_URL}/${url}`)
+  }
 }

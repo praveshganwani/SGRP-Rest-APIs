@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Plugins } from '@capacitor/core';
 import { Router } from '@angular/router';
+import { RegistrationService } from './api/registration.service';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private router: Router,
+    private register: RegistrationService
 
   ) {
 
@@ -31,11 +33,23 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       const { Storage } = Plugins;
-      Storage.get({ key: 'student' }).then(res => {
+      Storage.get({ key: 'student' }).then(async res => {
         if (res) {
           if (res.value) {
+
             this.Student = res.value
-            this.router.navigate(['/menu'])
+            let copy = res.value
+            let sid = JSON.parse(copy).studentId
+            let Isactive= await this.register.Isactive(sid)
+           
+            if (Isactive) {
+              this.router.navigate(['/menu'])
+            }
+            else {
+              Storage.clear()
+              localStorage.clear()
+              this.router.navigate(['/'])
+            }
           }
         }
         else {
@@ -46,11 +60,11 @@ export class AppComponent {
   }
 
 
-  
 
-  getUniversity(){
+
+  getUniversity() {
     return localStorage.getItem('UniversityName') || ''
- }
+  }
 
-  
+
 }

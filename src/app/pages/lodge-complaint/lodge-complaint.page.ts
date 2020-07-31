@@ -5,8 +5,10 @@ import { Plugins } from '@capacitor/core';
 import { Student } from 'src/app/Student';
 import { Platform, AlertController } from '@ionic/angular';
 import Notiflix from "notiflix";
-import {Camera} from '@ionic-native/camera/ngx/'
-import {ImageServiceService} from '../../image-service.service'
+import { Camera } from '@ionic-native/camera/ngx/'
+import { ImageServiceService } from '../../image-service.service'
+import { RegistrationService } from 'src/app/api/registration.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lodge-complaint',
@@ -15,15 +17,15 @@ import {ImageServiceService} from '../../image-service.service'
 })
 export class LodgeComplaintPage implements OnInit {
   grievance: Grievance = {}
-  imgPreview:any;
+  imgPreview: any;
   imageSet: boolean;
   itemPicturesStoreURL: unknown;
   Categories = []
-  plt:any
+  plt: any
   Student: Student = {}
   base64Image
-  constructor(private web: WebrequestService, public platform: Platform, private alert: AlertController,private camera:Camera,public imageProvider: ImageServiceService) { }
-  
+  constructor(private web: WebrequestService, private register: RegistrationService, public platform: Platform,private router:Router ,private alert: AlertController, private camera: Camera, public imageProvider: ImageServiceService) { }
+ 
   async ngOnInit() {
     this.plt = this.platform.platforms();
     this.GetCategories()
@@ -83,26 +85,38 @@ export class LodgeComplaintPage implements OnInit {
         Notiflix.Notify.Warning('Please add more detail to the complaint.')
       }
       else if (this.grievance.complaintDetail && this.grievance.complaintTitle && this.grievance.categoryId && (this.grievance.complaintIsAnonymous == 0 || this.grievance.complaintIsAnonymous == 1)) {
-        await this.submitForm();
-        this.grievance.imageUrl='https://sih2020complaints.s3.amazonaws.com/'+this.itemPicturesStoreURL
-        this.web.post('grievances/grievance', this.grievance).subscribe((res: any) => {
-          Notiflix.Loading.Remove();
-          if (res) {
-            if (res.status == 1) {
-              this.showAlert('Sucess', 'Complaint logded successfully.')
-              this.grievance = {}
+        let isActive = await this.register.Isactive(this.Student.studentId)
+        if (isActive) {
+          await this.submitForm();
+          this.grievance.imageUrl = 'https://sih2020complaints.s3.amazonaws.com/' + this.itemPicturesStoreURL
+          this.web.post('grievances/grievance', this.grievance).subscribe((res: any) => {
+            Notiflix.Loading.Remove();
+            if (res) {
+              if (res.status == 1) {
+                this.showAlert('Sucess', 'Complaint logded successfully.')
+                this.grievance = {}
+              }
+              else {
+                this.showAlert('Failed', 'Something Went Wrong.')
+              }
             }
             else {
-              this.showAlert('Failed', 'Something Went Wrong.')
+              Notiflix.Notify.Failure('Server Error while posting grievance.Try again in sometime.')
             }
-          }
-          else{
-            Notiflix.Notify.Failure('Server Error.Try again in sometime.')
-          }
-        })
+
+          })
+        }
+        else {
+          Notiflix.Loading.Remove();
+          this.showAlert('Error','You have been blocked')
+          localStorage.clear()
+          const { Storage } = Plugins;
+          Storage.clear()
+          this.router.navigate(['/'])
+        }
       }
       else {
-       
+
         Notiflix.Loading.Remove();
         Notiflix.Notify.Warning('Empty Complaint Not allowed.Make sure your category is detected')
       }
@@ -113,18 +127,18 @@ export class LodgeComplaintPage implements OnInit {
     }
   }
 
- 
 
-  FileChange(event){
-    let file  = event.target.files[0];
+
+  FileChange(event) {
+    let file = event.target.files[0];
     // let 
     console.log(file)
     this.imgPreview = file
     this.imageSet = true;
   }
 
-  async submitForm(){
-    if(this.imageSet) {
+  async submitForm() {
+    if (this.imageSet) {
       let imageName = 'Complaint_';
       await this.imageProvider.uploadImage(this.imgPreview, imageName).then((res) => {
         console.log("Response", res);
@@ -132,7 +146,7 @@ export class LodgeComplaintPage implements OnInit {
       }).catch((err) => {
         this.showAlert("Error is", err)
       })
-    } 
+    }
   }
 
   async showAlert(header: string, message: string) {

@@ -18,6 +18,9 @@
     <ion-card *ngFor='let g of griveances'>
         <ion-card-header *ngIf='(g.complaintIsSolved==1 && filter=="solved" || filter == "all") || (g.complaintIsSolved==0 && filter=="unsolved" || filter == "all") '>
             <ion-card-title class="blue">{{g.complaintTitle}}
+                <ion-button style="float: right;" (click)='Withdraw(g.complaintId)' *ngIf='!g.lastActivity'>
+                    <ion-icon name='trash'></ion-icon>
+                </ion-button>
                 <ion-icon *ngIf='g.complaintIsSolved == 1' style="float: right;" name='checkmark-circle'></ion-icon>
             </ion-card-title>
         </ion-card-header>

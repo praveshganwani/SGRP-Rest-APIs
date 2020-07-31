@@ -16,14 +16,14 @@
 
                 <div *ngIf="!chat.responseFrom.includes('STU')" class="message message-left">
                     <div class="bubble bubble-light">
-                        {{chat.response}}
-                        <br><br>
+                        <span style='font-size: 18px;'>{{chat.response}} </span>
+                        <br>
                         <div>By {{chat.responseFrom.includes('UNIV') ? getUniversityName() : getInstitueName() }} on {{chat.responseTime}}</div>
                     </div>
                 </div>
                 <div *ngIf="chat.responseFrom.includes('STU')" class="message message-right">
                     <div class="bubble bubble-dark">
-                        {{chat.response}}
+                        <span style='font-size: 18px;'>{{chat.response}}</span>
                         <br>
                         <div *ngIf='chat.responseTime'>By You on {{chat.responseTime}}</div>
                         <div *ngIf='!chat.responseTime'>By You Now</div>
