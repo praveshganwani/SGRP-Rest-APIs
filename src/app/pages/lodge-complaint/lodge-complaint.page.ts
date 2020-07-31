@@ -65,7 +65,7 @@ export class LodgeComplaintPage implements OnInit {
         })
       }
       else {
-        Notiflix.Notify.Failure('Please add more detail to the complaint.')
+        Notiflix.Notify.Failure('Please add more detail/ add title to the complaint.')
       }
     }
     catch (err) {
@@ -97,7 +97,7 @@ export class LodgeComplaintPage implements OnInit {
             }
           }
           else{
-            Notiflix.Notify.Failure('Serve Error.Try again in sometime.')
+            Notiflix.Notify.Failure('Server Error.Try again in sometime.')
           }
         })
       }

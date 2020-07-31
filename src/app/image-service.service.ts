@@ -3,12 +3,13 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Platform } from '@ionic/angular';
 import { File } from '@ionic-native/file/ngx';
 import * as AWS from 'aws-sdk';
+import { WebrequestService } from './api/webrequest.service';
 @Injectable({
   providedIn: 'root'
 })
 export class ImageServiceService {
 
-  constructor(private camera: Camera, private platform: Platform, private file: File) { }
+  constructor(private camera: Camera,private webreq:WebrequestService) { }
   private options: CameraOptions = {
     targetWidth: 384,
     targetHeight: 384,
@@ -19,10 +20,13 @@ export class ImageServiceService {
   }
 
   s3Putimage(file, key) {
-    return new Promise((resolve, reject) => {
-      AWS.config.accessKeyId = 'ASIASWWWYSCOMP7IZVGA';
-      AWS.config.secretAccessKey = 'lt4mziEKTpAriTAKNapzTHuQ3SmXTYn5I+HATF0f';
-      AWS.config.sessionToken = 'FwoGZXIvYXdzEHkaDBUBu4/CgMnkE9ZikSLGAYM1xDnHQM0fc7KEgCwtkLmGYAsgryTdrHJe2MBtWh9ywbdvbxLSbSXcjndcW2sp4mtKEdzL3/vdk+2aTXNyzvwWo4+8ENVJKOmtLAvSo17FeS2Bv0sVH4sSXn3HXq7wRW9qbWpDPKvv+dfi+YaDg7l54eEd4MHp9iSCf7FmZRd2+8Rn8B7cPAMKy2X+Wno+gSbqzMFG8FjKlINhbzqjFYVK4PO6lj4k3QZSbyMfMVwIkq/WEUdT5qT4uxBHi+fpj1dCUla0Viju24v5BTIto7SBGiejUy34wisV39MVnIBb0SxE5LXuQh9kXa3K9Q+NR7cBGVr3ZhXURmeK';
+    return new Promise(async (resolve, reject) => {
+      await this.webreq.Get('properties').toPromise().then((res:any)=>{
+        AWS.config.accessKeyId = res.accessKeyId;
+        AWS.config.secretAccessKey = res.secretAccessKey;
+        AWS.config.sessionToken = res.sessionToken
+      })
+    
       AWS.config.region = 'us-east-1';
       AWS.config.signatureVersion = 'v4';
       let s3 = new AWS.S3();

@@ -20,14 +20,20 @@
         </ion-input>
     </ion-item>
     <ion-item>
-        <ion-label class="input">Picture</ion-label>
+        <ion-label class="input" for="myFileInput">Picture</ion-label>
+        <span class="file" *ngIf='imgPreview'>
+            {{imgPreview.name}}
+        </span>
 
+        <span class="file" *ngIf='!imgPreview'>
+            No file chosen
+        </span>
 
-        <ion-input id='fileinput' #f type="file" (change)="FileChange($event)"></ion-input>
-
+        <ion-button fill="outline" class="picture"> Select
+            <ion-input accept="image/*" type="file" id="myFileInput" (change)="FileChange($event)"></ion-input>
+        </ion-button>
 
     </ion-item>
-
 
 
     <ion-item>
@@ -47,6 +53,6 @@
 
     <ion-button class="lodge" (click)='LodgeComplaint()'>Submit</ion-button>
 
-    *Incase of wrong category rephrase your complaint.
+    <div class="text">*Incase of wrong category rephrase your complaint.</div>
 
 </ion-content>
