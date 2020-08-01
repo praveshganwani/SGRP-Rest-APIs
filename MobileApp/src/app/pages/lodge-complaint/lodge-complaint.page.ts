@@ -24,8 +24,8 @@ export class LodgeComplaintPage implements OnInit {
   plt: any
   Student: Student = {}
   base64Image
-  constructor(private web: WebrequestService, private register: RegistrationService, public platform: Platform,private router:Router ,private alert: AlertController, private camera: Camera, public imageProvider: ImageServiceService) { }
- 
+  constructor(private web: WebrequestService, private register: RegistrationService, public platform: Platform, private router: Router, private alert: AlertController, private camera: Camera, public imageProvider: ImageServiceService) { }
+
   async ngOnInit() {
     this.plt = this.platform.platforms();
     this.GetCategories()
@@ -54,7 +54,6 @@ export class LodgeComplaintPage implements OnInit {
             }
             else if (res.status == 1) {
               await this.web.post('grievances/check/category', { complaintDetail: this.grievance.complaintDetail }).toPromise().then((res: any) => {
-
                 this.grievance.categoryId = res.categoryId
                 Notiflix.Notify.Success('Category has been detected')
 
@@ -62,7 +61,7 @@ export class LodgeComplaintPage implements OnInit {
             }
           }
           else {
-            Notiflix.Notify.Failure('Server Error.Try again in sometime')
+            Notiflix.Notify.Failure('Server Error while detecting category.Try again in sometime')
           }
         })
       }
@@ -88,27 +87,35 @@ export class LodgeComplaintPage implements OnInit {
         let isActive = await this.register.Isactive(this.Student.studentId)
         if (isActive) {
           await this.submitForm();
-          this.grievance.imageUrl = 'https://sih2020complaints.s3.amazonaws.com/' + this.itemPicturesStoreURL
+          if (this.imageSet)
+            this.grievance.imageUrl = 'https://sih2020complaints.s3.amazonaws.com/' + this.itemPicturesStoreURL
+          else
+            this.grievance.imageUrl = ''
+        
           this.web.post('grievances/grievance', this.grievance).subscribe((res: any) => {
             Notiflix.Loading.Remove();
             if (res) {
               if (res.status == 1) {
                 this.showAlert('Sucess', 'Complaint logded successfully.')
+
                 this.grievance = {}
+                this.grievance.complaintStudentId = this.Student.studentId
+                this.imgPreview = null
+                this.imageSet = false
               }
               else {
                 this.showAlert('Failed', 'Something Went Wrong.')
               }
             }
             else {
-              Notiflix.Notify.Failure('Server Error while posting grievance.Try again in sometime.')
+              Notiflix.Notify.Failure('Server did not responding while posting grievance.')
             }
 
           })
         }
         else {
           Notiflix.Loading.Remove();
-          this.showAlert('Error','You have been blocked')
+          this.showAlert('Error', 'You have been blocked')
           localStorage.clear()
           const { Storage } = Plugins;
           Storage.clear()
@@ -122,7 +129,7 @@ export class LodgeComplaintPage implements OnInit {
       }
     }
     catch (err) {
-      this.showAlert('Failed', 'Something Went Wrong.')
+      this.showAlert('Failed', 'Something Went Wrong.' + err)
       Notiflix.Loading.Remove();
     }
   }
@@ -143,8 +150,8 @@ export class LodgeComplaintPage implements OnInit {
       await this.imageProvider.uploadImage(this.imgPreview, imageName).then((res) => {
         console.log("Response", res);
         this.itemPicturesStoreURL = res;
-      }).catch((err) => {
-        this.showAlert("Error is", err)
+      }).catch(async (err) => {
+        await this.showAlert("Error is", err)
       })
     }
   }
