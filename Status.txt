@@ -1,0 +1,6 @@
+1 : Success
+-4 : Already Registered
+-1: Wrong Password
+-2: Not Verified. Wait for Verification
+-3: Not Registered
+0: Something went wrong

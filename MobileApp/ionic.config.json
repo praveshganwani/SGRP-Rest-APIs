@@ -1,8 +1,0 @@
-{
-  "name": "StudentComplaint",
-  "integrations": {
-    "capacitor": {},
-    "cordova": {}
-  },
-  "type": "angular"
-}

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home | SGRP REST Service</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <center><h1 class="display-2">SGRP REST Services</h1></center>
+            <hr>
+            <div>
+                <p style="color:red;">(NOTE: All Routes Support JSON Format Only)</p>
+            </div>
+            <h2 class="h2">Login Routes</h2>
+            <div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <p>Login for Committees - Use <span class="font-weight-bold">POST</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/login/committee</p>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Request Format:</h5>
+                                <img src="images/login_committee_request.png" width="500" alt=""/>
+                            </div>
+                            <div class="col">
+                                <h5>Response Format:(Check Status Codes)</h5>
+                                <img src="images/login_committee_response.png" width="500" alt=""/>
+                            </div>
+                        </div>
+                    </li>
+                    <br>
+                    <li class="list-group-item">
+                    <p>Login for Students - Use <span class="font-weight-bold">POST</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/login/student</p>
+                    <div class="row">
+                        <div class="col">
+                            <h5>Request Format:</h5>
+                            <img src="images/login_student_request.png" width="500" alt=""/>
+                        </div>
+                        <div class="col">
+                            <h5>Response Format:(Check Status Codes)</h5>
+                            <img src="images/login_student_response.png" width="500" alt=""/>
+                        </div>
+                    </div>
+                    </li>
+                    <br>
+                    <li class="list-group-item">
+                    <p>Login for Admins - Use <span class="font-weight-bold">POST</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/login/admin</p>
+                    <div class="row">
+                        <div class="col">
+                            <h5>Request Format:(Check Status Codes)</h5>
+                            <img src="images/login_admin_request.png" width="500" alt=""/>
+                        </div>
+                        <div class="col">
+                            <h5>Response Format:</h5>
+                            <img src="images/login_admin_response.png" width="500" alt=""/>
+                        </div>
+                    </div>
+                    </li>
+                    <br>
+                </ul>
+            </div>
+            <hr>
+            <h2 class="h2">Committee Routes</h2>
+            <div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                    <p>List of All Committees - Use <span class=-"font-weight-bold">GET</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/committees</p>
+                    <div class="row">
+                        <div class="col">
+                            <h5>Response Format:</h5>
+                            <img src="images/get_committees.png" width="500" alt=""/>
+                        </div>
+                    </div>
+                    </li>
+                <br>
+                    <li class="list-group-item">
+                    <p>Get Committee By Id - Use <span class="font-weight-bold">GET</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/committees/committee/{pass Committee Id Here}</p>
+                    <div class="row">
+                        <div class="col">
+                            <h5>Response Format:</h5>
+                            <img src="images/get_committee.png" width="500" alt=""/>
+                        </div>
+                    </div>
+                    </li>
+                <br>
+                    <li class="list-group-item">
+                    <p>
+                        Create(Register) A Committee - Use <span class="font-weight-bold">POST</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/committees/committee <br>
+                        <span style="color:red;">Do not pass Committee ID (auto generated on server side). <br>
+                        Do not pass Registration Date (auto generated on server side). <br>
+                        Pass password in raw format (encryption on server side).</span>
+                    </p>
+                    <div class="row">
+                        <div class="col">
+                            <h5>Request Format:</h5>
+                            <img src="images/register_committee_request.png" width="500" alt=""/>
+                        </div>
+                        <div class="col">
+                            <h5>Response Format:(Check Status Codes)</h5>
+                            <img src="images/register_response.png" width="500" alt=""/>
+                        </div>
+                    </div>
+                    </li>
+                <br>
+                    <li class="list-group-item">
+                        <p>Delete Committee By Id - Use <span class="font-weight-bold">DELETE</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/committees/committee/{pass Committee Id Here}</p>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Response Format:(Check Status Codes)</h5>
+                                <img src="images/register_response.png" width="500" alt=""/>
+                            </div>
+                        </div>
+                    </li>
+                    <br>
+                    <li class="list-group-item">
+                        <p>Update Route still not done</p>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <h2 class="h2">Student Routes</h2>
+            <div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <p>List of All Students - Use <span class="font-weight-bold">GET</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/students</p> 
+                        <div class="row">
+                            <div class="col">
+                                <h5>Response Format:(Check Status Codes)</h5>
+                                <img src="images/get_students.png" width="500" alt=""/>
+                            </div>
+                        </div>
+                    </li>   
+                    <br>
+                    <li class="list-group-item">
+                        <p>Get Student By Id - Use <span class="font-weight-bold">GET</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/students/student/{pass Student Id Here}</p>
+                        <div class="row">
+                            <div class="col">
+                                        <h5>Response Format:(Check Status Codes)</h5>
+                                        <img src="images/get_student.png" width="500" alt=""/>
+                            </div>
+                        </div>
+                    </li>
+                    <br>
+                    <li class="list-group-item">
+                        <p>
+                            Create(Register) A Student - Use <span class="font-weight-bold">POST</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/students/student <br>
+                            <span style="color:red;">Do not pass Student ID (auto generated on server side). <br>
+                            Do not pass Registration Date (auto generated on server side). <br>
+                            Pass password in raw format (encryption on server side).
+                            </span>
+                        </p>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Request Format:</h5>
+                                <img src="images/register_student_request.png" width="500" alt=""/>
+                            </div>
+                            <div class="col">
+                                <h5>Response Format:(Check Status Codes)</h5>
+                                <img src="images/register_response.png" width="500" alt=""/>
+                            </div>
+                        </div>
+                    </li>
+                    <br>
+                    <li class="list-group-item">
+                        <p>Delete Student By Id - Use <span class="font-weight-bold">DELETE</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/students/student/{pass Student Id Here}</p>
+                        <div class="row">
+                            <div class="col">   
+                                    <h5>Response Format:(Check Status Codes)</h5>
+                                    <img src="images/register_response.png" width="500" alt=""/>
+                            </div>
+                        </div>
+                    </li>
+                    <br>
+                    <li class="list-group-item">
+                        <p>Update Route still not done</p>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <h2 class="h2">Admin Routes</h2>
+            <div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <p>List of All Admins - Use <span class="font-weight-bold">GET</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/admins</p>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Response Format:(Check Status Codes)</h5>
+                                <img src="images/get_admins.png" width="500" alt=""/>
+                            </div>
+                        </div>
+                    </li>
+                    <br>
+                    <li class="list-group-item">
+                        <p>Get Admin By Id - Use <span class="font-weight-bold">GET</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/admins/admin/{pass Admin Id Here}</p>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Response Format:(Check Status Codes)</h5>
+                                <img src="images/get_admin.png" width="500" alt=""/>
+                            </div>
+                        </div>
+                    </li>
+                    <br>
+                    <li class="list-group-item">
+                        <p>
+                            Create(Register) A Admin - Use <span class="font-weight-bold">POST</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/admins/admin <br>
+                            <span style="color:red;">Do not pass Admin ID (auto generated on server side). <br>
+                                Pass password in raw format (encryption on server side). </span>
+                        </p>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Request Format:</h5>
+                                <img src="images/register_admin_request.png" width="500" alt=""/>
+                            </div>
+                            <div class="col">
+                                <h5>Response Format:(Check Status Codes)</h5>
+                                <img src="images/register_response.png" width="500" alt=""/>
+                            </div>
+                        </div>
+                    </li>
+                    <br>
+                    <li class="list-group-item">
+                        <p>Delete Admin By Id - Use <span class="font-weight-bold">DELETE</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/admins/admin/{pass Admin Id Here}</p>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Response Format:(Check Status Codes)</h5>
+                                <img src="images/register_response.png" width="500" alt=""/>
+                            </div>
+                        </div>
+                    </li>
+                    <br>
+                    <li class="list-group-item">
+                        <p>Update Admin - Use <span class="font-weight-bold">PUT</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/admins/admin <br>
+                            <span style="color:red;">Send Admin Object in Body.</span>
+                        </p>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Request Format:</h5>
+                                <img src="images/register_admin_request.png" width="500" alt=""/>
+                            </div>
+                            <div class="col">
+                                <h5>Response Format:(Check Status Codes)</h5>
+                                <img src="images/register_response.png" width="500" alt=""/>
+                            </div>
+                        </div>
+                    </li>   
+                </ul>
+            </div>
+            <br>
+            <h2 class="h2">Course Routes</h2>
+            <div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <p>List of All Courses - Use <span class="font-weight-bold">GET</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/courses</p>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Response Format:(Check Status Codes)</h5>
+                                <img src="images/get_courses.png" width="500" alt=""/>
+                            </div>
+                        </div>
+                    </li>
+                    <br>
+                    <li class="list-group-item">
+                        <p>Get Course By Id - Use <span class="font-weight-bold">GET</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/courses/course/{pass Course Id Here}</p>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Response Format:(Check Status Codes)</h5>
+                                <img src="images/get_course.png" width="500" alt=""/>
+                            </div>
+                        </div>
+                    </li>
+                    <br>
+                    <li class="list-group-item">
+                        <p>
+                            Create(Register) A Course - Use <span class="font-weight-bold">POST</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/courses/course <br>
+                            <span style="color:red;">Do not pass Course ID (auto generated on server side). <br></span>
+                        </p>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Request Format:</h5>
+                                <img src="images/register_course_request.png" width="500" alt=""/>
+                            </div>
+                            <div class="col">
+                                <h5>Response Format:(Check Status Codes)</h5>
+                                <img src="images/register_response.png" width="500" alt=""/>
+                            </div>
+                        </div>
+                    </li>
+                    <br>
+                    <li class="list-group-item">
+                        <p>Delete Course By Id - Use <span class="font-weight-bold">DELETE</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/courses/course/{pass Course Id Here}</p>
+                        <div class="col">
+                            <h5>Response Format:(Check Status Codes)</h5>
+                            <img src="images/register_response.png" width="500" alt=""/>
+                        </div>
+                    </li>
+                    <br>
+                    <li class="list-group-item">
+                        <p>Update Course - Use <span class="font-weight-bold">PUT</span> Method - http://sgrprestservice-env.eba-mmpfxiym.us-east-1.elasticbeanstalk.com/webapi/courses/course <br>
+                        <span style="color:red;">Send Course Object in Body.</span>
+                        </p>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Request Format:</h5>
+                                <img src="images/register_course_request.png" width="500" alt=""/>
+                            </div>
+                            <div class="col">
+                                <h5>Response Format:(Check Status Codes)</h5>
+                                <img src="images/register_response.png" width="500" alt=""/>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <h2 class="h2">Status Codes</h2>
+            <div>
+                <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Status Code</th>
+                    <th scope="col">Meaning</th>
+                    <th scope="col">Additional Comments</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Success</td>
+                    <td>Sent this status code after successful Login (along with respective Authenticated Object), or successful updation and deletion</td>
+                  </tr>
+                  <tr>
+                    <td>-4</td>
+                    <td>User Already Registered</td>
+                    <td>Sent when trying to register Committees, Students or Admins</td>
+                  </tr>
+                  <tr>
+                    <td>-1</td>
+                    <td>Wrong Password</td>
+                    <td>Sent when trying to login</td>
+                  </tr>
+                  <tr>
+                    <td>-2</td>
+                    <td>User Not Verified. Wait for Verification</td>
+                    <td>Sent when trying to login</td>
+                  </tr>
+                  <tr>
+                    <td>-3</td>
+                    <td>User Not Registered</td>
+                    <td>Sent when trying to login</td>
+                  </tr>
+                  <tr>
+                    <td>0</td>
+                    <td>Something Went Wrong</td>
+                    <td>Sent when trying to login, register, update or delete</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+    </body>
+</html>
